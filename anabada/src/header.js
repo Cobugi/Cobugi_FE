@@ -62,10 +62,12 @@ export default function PrimarySearchAppBar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <SearchBox />
                     <Box sx={{ flexGrow: 1 }} />
+                    <div style={{marginRight:'20px'}}>
                     <Button variant="contained" style={buttonStyle}>
                         <span style={{ marginRight: 12 + "px" }}>물품등록</span>
                         <Edit color="#4470E1" variant="Linear" size={30} />
                     </Button>
+                    </div>
                     <Button
                         variant="text"
                         sx={{ fontWeight: "bold", color: "#333333" }}

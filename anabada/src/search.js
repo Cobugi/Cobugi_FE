@@ -16,6 +16,7 @@ export default function SearchBox() {
                 alignItems: "center",
                 width: 450,
                 borderRadius: "33px",
+                marginLeft : "170px"
             }}
         >
             <Button
