@@ -1,6 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import PrimarySearchAppBar from "./header";
+import PrimarySearchAppBar from "./Header/header";
 
 function App() {
     return (

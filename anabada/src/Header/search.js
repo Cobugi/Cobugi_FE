@@ -5,8 +5,21 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { SearchNormal1, Calendar } from "iconsax-react";
+import Popover from "@mui/material/Popover";
 
 export default function SearchBox() {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? "simple-popover" : undefined;
     return (
         <Paper
             component="form"
@@ -16,12 +29,13 @@ export default function SearchBox() {
                 alignItems: "center",
                 width: 450,
                 borderRadius: "33px",
-                marginLeft : "170px"
+                marginLeft: "170px",
             }}
         >
             <Button
                 size="small"
                 endIcon={<Calendar size="24" color="#4470E1" />}
+                onClick={handleClick}
             >
                 <div
                     style={{
@@ -34,6 +48,16 @@ export default function SearchBox() {
                     대여기간
                 </div>
             </Button>
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                }}
+            ></Popover>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
             <InputBase
                 sx={{ ml: 1, flex: 1, fontSize: 13 + "px" }}
