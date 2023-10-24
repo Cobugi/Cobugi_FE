@@ -1,6 +1,7 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import PrimarySearchAppBar from "./Header/header";
+import List from "./Main/List";
 
 function App() {
     return (
@@ -20,7 +21,10 @@ function App() {
         //     </a>
         //   </header>
         // </div>
-        <PrimarySearchAppBar />
+        <>
+            <PrimarySearchAppBar />
+            <List />
+        </>
     );
 }
 
