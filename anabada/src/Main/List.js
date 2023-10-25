@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 export default function List() {
     return (
-        <Grid container spacing={5} sx={{ padding: "30px" }}>
+        <Grid container spacing={5} sx={{ padding: "50px" }}>
             {productData.map((prodcut) => (
                 <Grid item xs={2.4}>
                     <Product {...prodcut} />

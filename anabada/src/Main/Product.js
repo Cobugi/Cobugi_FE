@@ -8,16 +8,29 @@ import { Building4 } from "iconsax-react";
 import { FaStar } from "react-icons/fa";
 import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import Modal from "./Modal";
+import ProductModal from "./Modal";
 
-export default function Product({ title, writer, cost, place, rating }) {
+export default function Product(props) {
     const [bookMarkIcon, setbookMarkIcon] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
-        <Card sx={{ position: "relative" }}>
-            <CardActionArea>
+        <Card
+            sx={{
+                position: "relative",
+                borderRadius: "10px",
+                boxShadow: "10px 10px 20px #EEEEEE",
+            }}
+        >
+            <CardActionArea onClick={handleOpen}>
                 <CardMedia
                     component="img"
                     height="250"
-                    image="/Camera.JPG"
+                    image={props.image}
                     alt="제품 이미지"
                 />
                 <CardContent>
@@ -25,34 +38,38 @@ export default function Product({ title, writer, cost, place, rating }) {
                         color="#707070"
                         sx={{ fontSize: "11px", marginBottom: "5px" }}
                     >
-                        {writer}
+                        {props.writer}
                     </Typography>
                     <Typography
                         gutterBottom
                         sx={{ fontSize: "11px", fontWeight: "bold" }}
                         component="div"
                     >
-                        {title}
+                        {props.title}
                     </Typography>
                     <Typography
                         sx={{ fontSize: "13px", marginBottom: "8px" }}
                         color="#4470E1"
                     >
-                        {cost} 원/일
+                        {props.cost} 원/일
                     </Typography>
-                    <Grid container spacing={2}>
-                        <Grid item xs={9}>
+                    <Grid container justifyContent="space-between">
+                        <Grid item>
                             <Typography
-                                sx={{ color: "#7E7E7E", fontSize: "13px" }}
+                                sx={{
+                                    color: "#7E7E7E",
+                                    fontSize: "13px",
+                                    align: "left",
+                                }}
                             >
                                 <Building4 size="13" color="#7E7E7E" />
-                                {place}
+                                {props.place}
                             </Typography>
                         </Grid>
-                        <Grid item xs={3}>
-                            <div style={{ color: "#7E7E7E" }}>
+                        <Grid item>
+                            <div style={{ color: "#7E7E7E", align: "right" }}>
                                 <FaStar color="red" />
-                                {rating}
+                                {props.rating}
                             </div>
                         </Grid>
                     </Grid>
@@ -76,6 +93,7 @@ export default function Product({ title, writer, cost, place, rating }) {
                     />
                 )}
             </div>
+            <ProductModal {...props} open={open} handleClose={handleClose} />
         </Card>
     );
 }
