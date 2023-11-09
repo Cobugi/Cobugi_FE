@@ -2,6 +2,7 @@
 import "./App.css";
 import PrimarySearchAppBar from "./Header/header";
 import List from "./Main/List";
+import MyPageIndex from "./MyPage/MyPageIndex";
 
 function App() {
     return (
@@ -22,8 +23,7 @@ function App() {
         //   </header>
         // </div>
         <>
-            <PrimarySearchAppBar />
-            <List />
+            <MyPageIndex />
         </>
     );
 }
