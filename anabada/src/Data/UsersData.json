@@ -3,21 +3,20 @@
             "id": "user1@1",
             "password": "user1",
             "name": "user1",
-            "bookMarkData" : [],
-            "reseredData" :[]
+            "bookMarkData" : []
         },
         {
             "id": "user2@2",
             "password": "user2",
             "name": "user2",
-            "bookMarkData" : [],
-            "reseredData" :[]
+            "bookMarkData" : [
+                {"lendingProductId" : "1"}
+            ]       
         },
         {
             "id": "user3@3",
             "password": "user3",
             "name": "user3",
-            "bookMarkData" : [],
-            "reseredData" :[]
+            "bookMarkData" : []
         } 
 ]
