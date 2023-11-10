@@ -2,6 +2,9 @@
 import "./App.css";
 import PrimarySearchAppBar from "./Header/header";
 import List from "./Main/List";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Signin from "./Signupin/Signin";
+import Signup from "./Signupin/Signup";
 import MyPageIndex from "./MyPage/MyPageIndex";
 
 function App() {
@@ -22,9 +25,22 @@ function App() {
         //     </a>
         //   </header>
         // </div>
-        <>
-            <MyPageIndex />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <PrimarySearchAppBar />
+                            <List />
+                        </>
+                    }
+                />
+                <Route path="/signin" element={<Signin />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/mypage" element={<MyPageIndex />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
