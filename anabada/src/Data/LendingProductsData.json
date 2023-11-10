@@ -1,0 +1,112 @@
+[
+    {
+        "lendingProductId" : "",
+
+        "registeredUserId" : "",
+        "registeredUserName" : "",
+
+        "productTitle" : "",
+        "productImage" : "",
+        "productName" : "",
+        "productDescription" : "",
+        "productCartegory" : "",
+        "productPrice" : "",
+
+        "place" : "",
+
+        "state" : "",
+
+        "rentalDate" : "",
+        "returnDate" :"",
+        "borrowedUserId" : "",
+        "borrowedUserName" : "",
+    
+        "reservedUsersInfo" : [
+
+        ]  
+    },
+    {
+        "lendingProductId" : "1",
+
+        "registeredUserId" : "user1@1",
+        "registeredUserName" : "user1",
+
+        "productTitle" : "카메라 대여해드립니다.",
+        "productImage" : "/Camera.JPG",
+        "productName" : "디지털 카메라",
+        "productDescription" : "성능 좋은 카메라 대여해드립니다 1일 10000원",
+        "productCartegory" : "3",
+        "productPrice" : "10000",
+
+        "place" : "우촌관",
+
+        "state" : "0",
+
+        "rentalDate" : "",
+        "returnDate" :"",
+        "borrowedUserId" : "",
+        "borrowedUserName" : "",
+    
+        "reservedUsersInfo" : [
+
+        ]  
+    },
+    {
+        "lendingProductId" : "2",
+
+        "registeredUserId" : "user1@1",
+        "registeredUserName" : "user1@1",
+
+        "productTitle" : "4인용 텐트 대여해드립니다.",
+        "productImage" : "/Tent.jpg",
+        "productName" : "4인용 텐트",
+        "productDescription" : "4인용 텐트 대여해드립니다 1일 10000원",
+        "productCartegory" : "7",
+        "productPrice" : "10000",
+
+        "place" : "우촌관",
+
+        "state" : "0",
+
+        "rentalDate" : "2023.11.07",
+        "returnDate" :"2023.11.09",
+        "borrowedUserId" : "user2@2",
+        "borrowedUserName" : "user2@2",
+    
+
+        "reservedUsersInfo" : [
+        ]  
+    },
+    {
+        "lendingProductId" : "3",
+
+        "registeredUserId" : "user1@1",
+        "registeredUserName" : "user1",
+
+        "productTitle" : "축구공 빌려드립니다",
+        "productImage" : "/SoccerBall.jpg",
+        "productName" : "축구공",
+        "productDescription" : "축구공 빌려드립니다 1일 5000원",
+        "productCartegory" : "6",
+        "productPrice" : "5000",
+
+        "place" : "우촌관",
+
+        "state" : "0",
+
+        "rentalDate" : "2023.11.07",
+        "returnDate" : "2023.11.09",
+        "borrowedUserId" : "user2@2",
+        "borrowedUserName" : "user2",
+    
+
+        "reservedUsersInfo" : [
+            {
+                "reservedUserId" : "user3@3",
+                "reservedUserName" : "user3",
+                "date" : "2023.11.11",
+                "place" : "2023.11.14"
+            } 
+        ]  
+    }
+]

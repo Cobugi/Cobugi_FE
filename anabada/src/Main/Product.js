@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { Building4 } from "iconsax-react";
+import { Bookmark, Building4 } from "iconsax-react";
 import { FaStar } from "react-icons/fa";
 import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
@@ -13,10 +13,16 @@ import Modal from "./Modal";
 import ProductModal from "./Modal";
 
 export default function Product(props) {
-    const [bookMarkIcon, setbookMarkIcon] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const bookMark = () => {
+        if (props.bookMarkIcon === true) {
+            props.delete(props.id);
+        } else {
+            props.add(props.id);
+        }
+    };
 
     return (
         <Card
@@ -76,11 +82,11 @@ export default function Product(props) {
                 </CardContent>
             </CardActionArea>
             <div style={{ position: "absolute", top: "3%", right: "3%" }}>
-                {bookMarkIcon === true ? (
+                {props.bookMarkIcon === true ? (
                     <BsFillBookmarkFill
                         size="40"
                         color="#FFDB5A"
-                        onClick={() => setbookMarkIcon(!bookMarkIcon)}
+                        onClick={() => bookMark}
                     />
                 ) : (
                     <BsFillBookmarkFill
@@ -89,7 +95,7 @@ export default function Product(props) {
                         style={{
                             opacity: 0.8,
                         }}
-                        onClick={() => setbookMarkIcon(!bookMarkIcon)}
+                        onClick={() => bookMark}
                     />
                 )}
             </div>
