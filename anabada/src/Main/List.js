@@ -1,5 +1,5 @@
 import Product from "./Product";
-import productData from "../Data/SeekingProductsData.json";
+import productData from "../Data/LendingProductsData.json";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import userData from "../Data/UsersData.json";
@@ -16,7 +16,6 @@ export default function List() {
                 <Grid item xs={2.4}>
                     <Product
                         {...prodcut}
-                        bookMarkIcon={bookmarks.includes(prodcut.id)}
                     />
                 </Grid>
             ))}
