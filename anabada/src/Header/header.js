@@ -20,9 +20,12 @@ import Button from "@mui/material/Button";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Edit } from "iconsax-react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PrimarySearchAppBar() {
     const [value, setValue] = React.useState(0); // value 상태 변수를 정의
+    const navigate = useNavigate();
     const handleChange = (event, newValue) => {
         setValue(newValue); // handleChange 함수를 정의
     };
@@ -71,12 +74,14 @@ export default function PrimarySearchAppBar() {
                     <Button
                         variant="text"
                         sx={{ fontWeight: "bold", color: "#333333" }}
+                        onClick={() => { navigate('/signin')}}
                     >
-                        로그인
+                      로그인 
                     </Button>
                     <Button
                         variant="text"
                         sx={{ fontWeight: "bold", color: "#333333" }}
+                        onClick={() => { navigate('/signup')}}
                     >
                         회원가입
                     </Button>

@@ -8,21 +8,13 @@ import { Bookmark, Building4 } from "iconsax-react";
 import { FaStar } from "react-icons/fa";
 import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-import Modal from "./Modal";
 import ProductModal from "./Modal";
 
 export default function Product(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const bookMark = () => {
-        if (props.bookMarkIcon === true) {
-            props.delete(props.id);
-        } else {
-            props.add(props.id);
-        }
-    };
+    const [bookMarkIcon, setBookmarkIcon] = React.useState(false);
 
     return (
         <Card
@@ -36,7 +28,7 @@ export default function Product(props) {
                 <CardMedia
                     component="img"
                     height="250"
-                    image={props.image}
+                    image={props.productImage}
                     alt="제품 이미지"
                 />
                 <CardContent>
@@ -44,20 +36,20 @@ export default function Product(props) {
                         color="#707070"
                         sx={{ fontSize: "11px", marginBottom: "5px" }}
                     >
-                        {props.writer}
+                        {props.registereUserName}
                     </Typography>
                     <Typography
                         gutterBottom
                         sx={{ fontSize: "11px", fontWeight: "bold" }}
                         component="div"
                     >
-                        {props.title}
+                        {props.productTitle}
                     </Typography>
                     <Typography
                         sx={{ fontSize: "13px", marginBottom: "8px" }}
                         color="#4470E1"
                     >
-                        {props.cost} 원/일
+                        {props.productPrice} 원/일
                     </Typography>
                     <Grid container justifyContent="space-between">
                         <Grid item>
@@ -75,18 +67,18 @@ export default function Product(props) {
                         <Grid item>
                             <div style={{ color: "#7E7E7E", align: "right" }}>
                                 <FaStar color="red" />
-                                {props.rating}
+                                4.0
                             </div>
                         </Grid>
                     </Grid>
                 </CardContent>
             </CardActionArea>
             <div style={{ position: "absolute", top: "3%", right: "3%" }}>
-                {props.bookMarkIcon === true ? (
+                {bookMarkIcon === true ? (
                     <BsFillBookmarkFill
                         size="40"
                         color="#FFDB5A"
-                        onClick={() => bookMark}
+                        onClick={() => setBookmarkIcon(!bookMarkIcon)}
                     />
                 ) : (
                     <BsFillBookmarkFill
@@ -95,7 +87,7 @@ export default function Product(props) {
                         style={{
                             opacity: 0.8,
                         }}
-                        onClick={() => bookMark}
+                        onClick={() => setBookmarkIcon(!bookMarkIcon)}
                     />
                 )}
             </div>
