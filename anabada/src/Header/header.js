@@ -65,26 +65,47 @@ export default function PrimarySearchAppBar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <SearchBox />
                     <Box sx={{ flexGrow: 1 }} />
-                    <div style={{marginRight:'20px'}}>
-                    <Button variant="contained" style={buttonStyle}>
-                        <span style={{ marginRight: 12 + "px" }}>물품등록</span>
-                        <Edit color="#4470E1" variant="Linear" size={30} />
-                    </Button>
+                    <div style={{ marginRight: "20px" }}>
+                        <Button variant="contained" style={buttonStyle}>
+                            <span style={{ marginRight: 12 + "px" }}>
+                                물품등록
+                            </span>
+                            <Edit color="#4470E1" variant="Linear" size={30} />
+                        </Button>
                     </div>
-                    <Button
-                        variant="text"
-                        sx={{ fontWeight: "bold", color: "#333333" }}
-                        onClick={() => { navigate('/signin')}}
-                    >
-                      로그인 
-                    </Button>
-                    <Button
-                        variant="text"
-                        sx={{ fontWeight: "bold", color: "#333333" }}
-                        onClick={() => { navigate('/signup')}}
-                    >
-                        회원가입
-                    </Button>
+
+                    {localStorage.getItem("currentUSer") !== null ? (
+                        <>
+                            <Button
+                                variant="text"
+                                sx={{ fontWeight: "bold", color: "#333333" }}
+                                onClick={() => {
+                                    navigate("/signin");
+                                }}
+                            >
+                                로그인
+                            </Button>
+                            <Button
+                                variant="text"
+                                sx={{ fontWeight: "bold", color: "#333333" }}
+                                onClick={() => {
+                                    navigate("/signup");
+                                }}
+                            >
+                                회원가입
+                            </Button>
+                        </>
+                    ) : (
+                        <Button
+                            variant="text"
+                            sx={{ fontWeight: "bold", color: "#333333" }}
+                            onClick={() => {
+                                navigate("/signup");
+                            }}
+                        >
+                            로그아웃
+                        </Button>
+                    )}
                 </Toolbar>
                 <div style={{ borderBottom: "1px solid #DBDBDB" }}>
                     <Tabs value={value} onChange={handleChange} centered>
