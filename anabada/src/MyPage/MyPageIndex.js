@@ -3,11 +3,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "../Header/header"
+import UserInfo from "../MyPage/UserInfo"
 import { Import } from "iconsax-react";
 import PrimarySearchAppBar from "../Header/header";
-import UserInfo from "./UserInfo";
-import ItemManage from "./ItemManage";
-import Bookmark from "./Bookmark";
 
 const MyPageIndex = ({ id }) => {
 
@@ -16,7 +14,7 @@ const MyPageIndex = ({ id }) => {
             <PrimarySearchAppBar />
             <UserInfo />
             <ItemManage />
-            <Bookmark userId={ id } />
+            <BookMark />
         </>
     )
 }

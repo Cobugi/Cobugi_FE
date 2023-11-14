@@ -14,13 +14,12 @@ import { List } from '@mui/material'
  * bookMarkData의 여러 lendingProductId 객체 배열을 가져온다.
 */
 
-const Bookmark = ({ userId }) => {
+const Bookmark = () => {
     if (userId == null) { // test code  
         userId = "user2@2"
     }
     const [{ bookMarkData }] = UserData.filter(user => user.id === userId)
-
-
+    
     return (
         <>
             <h1>북마크 정보</h1>
