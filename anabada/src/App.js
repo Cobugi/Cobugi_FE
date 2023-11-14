@@ -24,15 +24,6 @@ function App() {
                         </>
                     }
                 />
-                <Route
-                    path="/seeking"
-                    element={
-                        <>
-                            <PrimarySearchAppBar />
-                            <SeekingList />
-                        </>
-                    }
-                />
                 <Route path="/chat" element={<VerticalTabs />} />
                 {/* <Route path="/chat" element={<ChatPage />} /> */}
                 <Route path="/signin" element={<Signin />} />

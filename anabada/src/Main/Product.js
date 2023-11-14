@@ -25,32 +25,50 @@ export default function Product(props) {
             }}
         >
             <CardActionArea onClick={handleOpen}>
-                <CardMedia
-                    component="img"
-                    height="250"
-                    image={props.productImage}
-                    alt="제품 이미지"
-                />
-                <CardContent>
-                    <Typography
-                        color="#707070"
-                        sx={{ fontSize: "11px", marginBottom: "5px" }}
-                    >
-                        {props.registereUserName}
-                    </Typography>
-                    <Typography
-                        gutterBottom
-                        sx={{ fontSize: "11px", fontWeight: "bold" }}
-                        component="div"
-                    >
-                        {props.productTitle}
-                    </Typography>
-                    <Typography
-                        sx={{ fontSize: "13px", marginBottom: "8px" }}
-                        color="#4470E1"
-                    >
-                        {props.productPrice} 원/일
-                    </Typography>
+                {props.productImage ? (
+                    <CardMedia
+                        component="img"
+                        sx={{ height: "219px" }}
+                        image={props.productImage}
+                        alt="제품 이미지"
+                    />
+                ) : (
+                    <CardMedia
+                        component="img"
+                        sx={{ height: "219px" }}
+                        image="/empty.jpg"
+                        alt="제품 이미지"
+                    />
+                )}
+                <CardContent
+                    sx={{
+                        height: "141px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <div>
+                        <Typography
+                            color="#707070"
+                            sx={{ fontSize: "11px", marginBottom: "5px" }}
+                        >
+                            {props.registereUserName}
+                        </Typography>
+                        <Typography
+                            gutterBottom
+                            sx={{ fontSize: "11px", fontWeight: "bold" }}
+                            component="div"
+                        >
+                            {props.productTitle}
+                        </Typography>
+                        <Typography
+                            sx={{ fontSize: "13px", marginBottom: "8px" }}
+                            color="#4470E1"
+                        >
+                            {props.productPrice} 원/일
+                        </Typography>
+                    </div>
                     <Grid container justifyContent="space-between">
                         <Grid item>
                             <Typography

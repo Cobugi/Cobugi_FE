@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { addDays, isBefore, isAfter } from "date-fns";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange, DateRangePicker } from "react-date-range";
-import { addDays } from "date-fns";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import { Message } from "iconsax-react";
@@ -41,6 +41,21 @@ export default function ProductModal(props) {
             },
         ]);
     }, []);
+    const disabledDates = props.reservedUsersInfo?.reduce((acc, reserved) => {
+        // 예약된 날짜 범위를 disabledDates 배열에 추가
+        const reservedStartDate = new Date(reserved.reservedStartDate);
+        const reservedEndDate = new Date(reserved.reservedEndDate);
+
+        for (
+            let date = reservedStartDate;
+            isBefore(date, reservedEndDate);
+            date = addDays(date, 1)
+        ) {
+            acc.push(date);
+        }
+
+        return acc;
+    }, []);
     return (
         <Modal
             keepMounted
@@ -53,7 +68,7 @@ export default function ProductModal(props) {
                 <Box sx={{ width: 200 }}>
                     <img
                         alt="제품 이미지"
-                        src={props.image}
+                        src={props.productImage}
                         style={{
                             width: 300,
                             height: 300,
@@ -81,16 +96,16 @@ export default function ProductModal(props) {
                     sx={{ fontSize: "15px", fontWeight: "bold" }}
                     component="div"
                 >
-                    {props.title}
+                    {props.productTitle}
                 </Typography>
                 <Typography
                     sx={{ fontSize: "13px", marginBottom: "20px" }}
                     color="#4470E1"
                 >
-                    {props.cost} 원/일
+                    {props.productPrice} 원/일
                 </Typography>
                 <Typography sx={{ fontSize: "13px" }} component="div">
-                    {props.content}
+                    {props.productDescription}
                 </Typography>
                 <Typography
                     sx={{
@@ -122,6 +137,7 @@ export default function ProductModal(props) {
                         moveRangeOnFirstSelection={false}
                         locale={locales["ko"]}
                         ranges={state}
+                        disabledDates={disabledDates}
                     />
                 )}
 
