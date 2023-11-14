@@ -5,9 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryList from "../src/Category/CategoryList";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+import RecoilRoot from "recoil"
 root.render(
     <React.StrictMode>
+      <RecoilRoot>
         <App />
+      </RecoilRoot>
     </React.StrictMode>
 );
 
