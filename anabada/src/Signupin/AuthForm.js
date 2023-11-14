@@ -5,17 +5,20 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import userData from "../Data/UsersData.json";
-import { AuthErrorCodes, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../firebase-config";
+import {
+    AuthErrorCodes,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase-config";
 import { lastDayOfWeekWithOptions } from "date-fns/fp";
 
 // 회원가입 or 로그인폼 보여줌.
 
 const ErrorMessage = styled.div`
-  color: red;
-  margin-top: 5px;
-  font-size: 12px; 
-  
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
 `;
 
 const AuthFormBlock = styled.div`
@@ -110,48 +113,55 @@ const AuthForm = ({ type }) => {
 
     const register = async () => {
         try {
-          const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-          console.log(user);
-          const userInfo = { email: registerEmail, nickname };
-    
-          let existingInfo = localStorage.getItem("userList");
-          let userList = existingInfo ? JSON.parse(existingInfo) : [];
-    
-          userList.push(userInfo);
-          localStorage.setItem("userList", JSON.stringify(userList)); // 로컬 스토리지에 회원가입 된 유저의 이메일과 닉네임 올리기
-        
-          navigate('/'); //회원가입 완료시 로그인 페이지로 이동
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                registerEmail,
+                registerPassword
+            );
+            console.log(user);
+            const userInfo = { email: registerEmail, nickname };
+
+            let existingInfo = localStorage.getItem("userList");
+            let userList = existingInfo ? JSON.parse(existingInfo) : [];
+
+            userList.push(userInfo);
+            localStorage.setItem("userList", JSON.stringify(userList)); // 로컬 스토리지에 회원가입 된 유저의 이메일과 닉네임 올리기
+
+            navigate("/"); //회원가입 완료시 로그인 페이지로 이동
         } catch (error) {
-          handleAuthErrors(error);
+            handleAuthErrors(error);
         }
-      };
+    };
 
     const login = async (email, password) => {
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
             console.log("로그인 성공");
             localStorage.setItem("currentUser", email);
-            navigate('/'); 
-
+            navigate("/");
         } catch (error) {
             const errorMessage = error.message;
             console.log(errorMessage);
-
-          handleAuthErrors(error);
-          
+            handleAuthErrors(error);
         }
-    }
+    };
 
     const submit = (e) => {
         e.preventDefault();
-        if(type === "login"){
+        if (type === "login") {
+
             const emaillogin = idRef.current.value;
             const passwordlogin = pswdRef.current.value;
 
             //const user = users.find((user) => user.id === id2);
             login(emaillogin, passwordlogin);
-            
+
            /* if (user) {
+
                 if (user.password === password2) {
                     console.log(user.name + " 님, 로그인에 성공했습니다.");
                     localStorage.clear();
@@ -166,15 +176,13 @@ const AuthForm = ({ type }) => {
                 // 주어진 ID를 가진 사용자를 찾을 수 없음
                     setErrorMessage("사용자를 찾을 수 없습니다.");
             }*/
-        }
-        else if(type === "register"){
+
+        } else if (type === "register") {
             if (registerPassword !== passwordConfirm) {
                 setErrorMessage("비밀번호가 일치하지 않습니다.");
-            } 
-            else if(nickname.trim() == ""){
+            } else if (nickname.trim() == "") {
                 setErrorMessage("닉네임을 입력해주세요.");
-            }
-            else if(nickname.trim() !== "") {
+            } else if (nickname.trim() !== "") {
                 register();
             }
         }
@@ -190,7 +198,8 @@ const AuthForm = ({ type }) => {
                     name="email"
                     placeholder="이메일"
                     type="email"
-                    onChange = {(e) => {
+
+                    onChange={(e) => {
                         setRegisterEmail(e.target.value);
                         setErrorMessage("");
                     }}
@@ -212,7 +221,9 @@ const AuthForm = ({ type }) => {
                     ref={pswdRef}
                     placeholder="비밀번호"
                     type="password"
-                    onChange = {(e) => {
+
+                    onChange={(e) => {
+
                         setRegisterPassword(e.target.value);
                         setErrorMessage("");
                     }}
@@ -227,6 +238,7 @@ const AuthForm = ({ type }) => {
                         onChange={(e) => {
                             setPasswordConfirm(e.target.value);
                             setErrorMessage(""); 
+
                         }}
                     />
                 )}

@@ -23,7 +23,9 @@ const AuthTemplateBlock = styled.div`
 
 const WhiteBox = styled.div`
     .logo-area {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding-bottom: 2rem;
         text-align: center;
         font-weight: bold;
@@ -52,6 +54,7 @@ const AuthTemplate = ({ children }) => {
                             component="div"
                             sx={{
                                 display: { xs: "none", sm: "block" },
+
                             }}
                         >
                             <img

@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryList from "../src/Category/CategoryList";
 import RecoilRoot from "recoil";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -14,6 +15,7 @@ root.render(
     //   </RecoilRoot>
     // </React.StrictMode>
     <App/>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

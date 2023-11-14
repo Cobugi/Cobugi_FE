@@ -222,6 +222,7 @@
         "registeredUserName" : "user1",
 
         "productTitle" : "카메라 대여해드립니다.",
+
         "productImage" : "",
         "productName" : "디지털 카메라",
         "productDescription" : "성능 좋은 카메라 대여해드립니다 1일 10000원",
@@ -1123,6 +1124,7 @@
 
         "productTitle" : "카메라 대여해드립니다.",
         "productImage" : "",
+
         "productName" : "디지털 카메라",
         "productDescription" : "성능 좋은 카메라 대여해드립니다 1일 10000원",
         "productCartegory" : "3",

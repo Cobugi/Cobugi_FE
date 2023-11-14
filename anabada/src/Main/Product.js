@@ -91,8 +91,10 @@ export default function Product(props) {
                     />
                 )}
             </div>
+
             <ProductModal {...props} open={open} handleClose={handleClose} />
             
         </Card>
     );
 }
+
