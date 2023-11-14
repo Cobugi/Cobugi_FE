@@ -6,6 +6,8 @@ import SearchBox from "./search";
 import Button from "@mui/material/Button";
 import { Edit } from "iconsax-react";
 import { useNavigate } from "react-router-dom";
+import { Message, ProfileCircle } from "iconsax-react";
+import { IconButton } from "@mui/material";
 
 export default function PrimarySearchAppBar() {
     const navigate = useNavigate();
@@ -73,15 +75,39 @@ export default function PrimarySearchAppBar() {
                             </Button>
                         </>
                     ) : (
-                        <Button
-                            variant="text"
-                            sx={{ fontWeight: "bold", color: "#333333" }}
-                            onClick={() => {
-                                navigate("/signup");
-                            }}
-                        >
-                            로그아웃
-                        </Button>
+                        <>
+                            <Button
+                                variant="text"
+                                sx={{ fontWeight: "bold", color: "#333333" }}
+                                onClick={() => {
+                                    navigate("/signup");
+                                }}
+                            >
+                                로그아웃
+                            </Button>
+                            <IconButton
+                                onClick={() => {
+                                    navigate("/chat");
+                                }}
+                            >
+                                <Message
+                                    size="40"
+                                    color="#67788d"
+                                    variant="Bold"
+                                />
+                            </IconButton>
+                            <IconButton
+                                onClick={() => {
+                                    navigate("/mypage");
+                                }}
+                            >
+                                <ProfileCircle
+                                    size="40"
+                                    color="#67788d"
+                                    variant="Bulk"
+                                />
+                            </IconButton>
+                        </>
                     )}
                 </Toolbar>
             </Box>

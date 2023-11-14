@@ -29,7 +29,7 @@ export default function CategoryList() {
             <List
                 selectedCategory={selectedCategory}
                 productData={productData}
-                type="category"
+                type="seeking"
             />
         </div>
     );
