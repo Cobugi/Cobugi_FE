@@ -49,9 +49,10 @@ export default function ProductModal(props) {
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
         >
-            <Box sx={style}>
+            <Box sx={{ ...style, position: "relative" }}>
                 <Box sx={{ width: 200 }}>
                     <img
+                        alt="제품 이미지"
                         src={props.image}
                         style={{
                             width: 300,
@@ -114,16 +115,27 @@ export default function ProductModal(props) {
                         {props.place}
                     </Typography>
                 </Typography>
-                <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => setState([item.selection])}
-                    moveRangeOnFirstSelection={false}
-                    locale={locales["ko"]}
-                    ranges={state}
-                />
+                {props.type === "lending" && (
+                    <DateRange
+                        editableDateInputs={true}
+                        onChange={(item) => setState([item.selection])}
+                        moveRangeOnFirstSelection={false}
+                        locale={locales["ko"]}
+                        ranges={state}
+                    />
+                )}
+
                 <Button
                     variant="contained"
-                    sx={{ verticalAlign: "bottom", marginLeft: 3 }}
+                    // sx={{
+                    //     verticalAlign: "bottom",
+                    // }}
+                    sx={{
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0,
+                        margin: 3,
+                    }}
                     endIcon={<Message size="16" color="white" />}
                 >
                     대화하기
