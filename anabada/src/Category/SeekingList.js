@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import CategoryBtn from "./CategoryButton";
 import List from "../Main/List";
-import productData from "../Data/LendingProductsData.json";
+import productData from "../Data/SeekingProductsData.json";
 
 export default function CategoryList() {
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -29,7 +29,7 @@ export default function CategoryList() {
             <List
                 selectedCategory={selectedCategory}
                 productData={productData}
-                type="lending"
+                type="category"
             />
         </div>
     );

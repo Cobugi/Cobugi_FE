@@ -1,34 +1,14 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import SearchBox from "./search";
 import Button from "@mui/material/Button";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import { Edit } from "iconsax-react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function PrimarySearchAppBar() {
-    const [value, setValue] = React.useState(0); // value 상태 변수를 정의
     const navigate = useNavigate();
-    const handleChange = (event, newValue) => {
-        setValue(newValue); // handleChange 함수를 정의
-    };
 
     const buttonStyle = {
         width: "140px", // 가로 크기
@@ -41,11 +21,7 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <Box
-                position="static"
-                color=""
-                sx={{ borderBottom: "1px solid #DBDBDB" }}
-            >
+            <Box position="static" color="">
                 <Toolbar>
                     <Typography
                         variant="h6"
@@ -57,6 +33,7 @@ export default function PrimarySearchAppBar() {
                         }}
                     >
                         <img
+                            alt="logo"
                             src="/anabada_logo.jpg"
                             width="90px"
                             height="50px"
@@ -107,13 +84,6 @@ export default function PrimarySearchAppBar() {
                         </Button>
                     )}
                 </Toolbar>
-                <div style={{ borderBottom: "1px solid #DBDBDB" }}>
-                    <Tabs value={value} onChange={handleChange} centered>
-                        <Tab sx={{ fontSize: "18px" }} label="빌리기" />
-                        <Tab sx={{ fontSize: "18px" }} label="빌려주기" />
-                        <Tab sx={{ fontSize: "18px" }} label="물품 지도" />
-                    </Tabs>
-                </div>
             </Box>
         </Box>
     );
