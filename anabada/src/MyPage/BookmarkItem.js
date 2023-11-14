@@ -2,16 +2,21 @@
 
 import React, { useEffect } from "react";
 import LendingProductsData from "../Data/LendingProductsData.json"
+import { ListItem, ListItemText } from '@mui/material';
 
 const BookmarkItem = ({ ProductId }) => {
 
-    const a = LendingProductsData.filter(({lendingProductId}) => lendingProductId === ProductId)
+    const products = LendingProductsData.filter(({lendingProductId}) => lendingProductId === ProductId)
     
-    return (
+    return (    
         <>
-            <div>전달 받은 ProductId : { a.map((item, idx) => {
-                return <div>{item.productTitle}</div>
-            }) }</div>
+            { 
+                products.map((item, idx) => 
+                <ListItem>
+                    <ListItemText primary={ `전달 받은 productId : ${ProductId}` }/>
+                </ListItem>
+                )
+            }
         </>
     )
 }

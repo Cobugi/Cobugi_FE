@@ -1,8 +1,9 @@
 /* eslint-disable*/
 
-import React from "react";
-import BookmarkItem from "./BookmarkItem";
+import React from "react"
+import BookmarkItem from "./BookmarkItem"
 import UserData from "../Data/UsersData.json"
+import { List } from '@mui/material'
 
 /*
  * json 구조
@@ -22,12 +23,14 @@ const Bookmark = ({ userId }) => {
 
     return (
         <>
-            <div>북마크 정보</div>
+            <h1>북마크 정보</h1>
+            <List>
             {
                 bookMarkData.map(({ lendingProductId }, idx) => 
                     <BookmarkItem ProductId={lendingProductId} key={`${userId}-${idx}`}/>
                 )
             }
+            </List>
         </>
     )
 }
