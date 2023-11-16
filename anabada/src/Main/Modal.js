@@ -11,8 +11,15 @@ import { DateRange, DateRangePicker } from "react-date-range";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import { Message } from "iconsax-react";
-
+import CloseIcon from '@mui/icons-material/Close';
 const style = {
+    maxHeight: "80vh",
+    overflowY: "auto",
+    "scrollbar-width": "none", // Firefox
+    "-ms-overflow-style": "none", // IE 및 엣지
+    "&::-webkit-scrollbar": {
+        display: "none", // Chrome 및 Safari
+    },
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -22,6 +29,7 @@ const style = {
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
+    height: "auto",
 };
 
 export default function ProductModal(props) {
@@ -63,15 +71,27 @@ export default function ProductModal(props) {
             onClose={props.handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
+            
         >
+          
             <Box sx={{ ...style, position: "relative" }}>
+            <CloseIcon
+             onClick ={props.handleClose}
+             sx={{
+                position: "relative",
+                // bottom: 0,
+                // right: 0,
+                // margin: 3,
+                left:410
+            }}
+            />
                 <Box sx={{ width: 200 }}>
                     <img
                         alt="제품 이미지"
                         src={props.productImage}
                         style={{
-                            width: 300,
-                            height: 300,
+                            width: 180,
+                            height: 180,
                             objectFit: "contain",
                         }}
                     />
@@ -130,8 +150,9 @@ export default function ProductModal(props) {
                         {props.place}
                     </Typography>
                 </Typography>
-                {props.type === "lending" && (
+             
                     <DateRange
+                        style={{ width: "400px" }} 
                         editableDateInputs={true}
                         onChange={(item) => setState([item.selection])}
                         moveRangeOnFirstSelection={false}
@@ -139,7 +160,7 @@ export default function ProductModal(props) {
                         ranges={state}
                         disabledDates={disabledDates}
                     />
-                )}
+                
 
                 <Button
                     variant="contained"
@@ -147,10 +168,12 @@ export default function ProductModal(props) {
                     //     verticalAlign: "bottom",
                     // }}
                     sx={{
-                        position: "absolute",
+                        position: "relative",
                         bottom: 0,
-                        right: 0,
-                        margin: 3,
+                        // right: 0,
+                        
+                        left:300,
+                        //margin: 3,
                     }}
                     endIcon={<Message size="16" color="white" />}
                 >
