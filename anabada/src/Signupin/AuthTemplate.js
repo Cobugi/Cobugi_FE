@@ -53,10 +53,8 @@ const AuthTemplate = ({ children }) => {
                             noWrap
                             component="div"
                             sx={{
-                                display: {
-                                    xs: "none",
-                                    sm: "block",
-                                },
+                                display: { xs: "none", sm: "block" },
+
                             }}
                         >
                             <img

@@ -13,7 +13,7 @@ import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import CloseIcon from "@mui/icons-material/Close";
 import { Message } from "iconsax-react";
-
+import CloseIcon from '@mui/icons-material/Close';
 const style = {
     maxHeight: "80vh",
     overflowY: "auto",
@@ -75,15 +75,27 @@ export default function ProductModal(props) {
             onClose={props.handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
+            
         >
+          
             <Box sx={{ ...style, position: "relative" }}>
+            <CloseIcon
+             onClick ={props.handleClose}
+             sx={{
+                position: "relative",
+                // bottom: 0,
+                // right: 0,
+                // margin: 3,
+                left:410
+            }}
+            />
                 <Box sx={{ width: 200 }}>
                     <img
                         alt="제품 이미지"
                         src={props.productImage}
                         style={{
-                            width: 100,
-                            height: 100,
+                            width: 180,
+                            height: 180,
                             objectFit: "contain",
                         }}
                     />
@@ -142,8 +154,9 @@ export default function ProductModal(props) {
                         {props.place}
                     </Typography>
                 </Typography>
-                {props.type === "lending" && (
+             
                     <DateRange
+                        style={{ width: "400px" }} 
                         editableDateInputs={true}
                         onChange={(item) => setState([item.selection])}
                         moveRangeOnFirstSelection={false}
@@ -151,7 +164,7 @@ export default function ProductModal(props) {
                         ranges={state}
                         disabledDates={disabledDates}
                     />
-                )}
+                
 
                 <Button
                     variant="contained"
@@ -160,9 +173,11 @@ export default function ProductModal(props) {
                     // }}
                     sx={{
                         position: "relative",
-                        bottom: 0,
-                        left: 300,
-                        // marginLeft: 4,
+                        // right: 0,
+                        
+                        left:300,
+                        //margin: 3,
+
                     }}
                     endIcon={<Message size="16" color="white" />}
                     onClick={() => {

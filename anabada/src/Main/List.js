@@ -8,8 +8,8 @@ import Pagination from "@mui/material/Pagination";
 export default function List({ selectedCategory, productData, type }) {
     const userId = localStorage.getItem("userId");
     const itemsPerPage = 20;
-    const bookmarks =
-        userData.find((el) => el.id === userId)?.bookMarkData || [];
+
+    const bookmarks = userData.find((el) => el.id === userId)?.bookMarkData || [];
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -52,25 +52,22 @@ export default function List({ selectedCategory, productData, type }) {
     };
 
     return (
-        <>
-            <Grid container spacing={5} sx={{ padding: "50px" }}>
-                {filteredProducts.map((product) => (
-                    <Grid item xs={2.4} key={product.productId}>
-                        <Product {...product} type={type} />
-                    </Grid>
-                ))}
+      <>
+        <Grid container spacing={5} sx={{ padding: "50px" }}>
+          {currentDisplayedProducts.map((product) => (
+            <Grid item xs={2.4} key={product.productId}>
+              <Product {...product} />
             </Grid>
-            <Pagination //바뀐곳
-                count={totalPageCount}
-                size="small"
-                page={currentPage}
-                onChange={handlePageChange}
-                sx={{
-                    margin: "20px auto",
-                    display: "flex",
-                    justifyContent: "center",
-                }}
-            />
-        </>
-    );
+          ))}
+        </Grid>
+        <Pagination //바뀐곳
+          count={totalPageCount}
+          size="small"
+          page={currentPage}
+          onChange={handlePageChange}
+          sx={{ margin: "20px auto", display: "flex", justifyContent: "center" }}
+        />
+    </>
+
+    );  
 }

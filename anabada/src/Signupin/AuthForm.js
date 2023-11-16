@@ -40,9 +40,9 @@ const ButtonWithMarinTop = styled.button`
     outline: none;
     cursor: pointer;
 
-    background: #4470e1;
+    background: #4470E1;
     &:hover {
-        background: #5e83e0;
+        background: #5E83E0;
     }
     margin-top: 1rem;
     padding-top: 0.75rem;
@@ -91,7 +91,7 @@ const AuthForm = ({ type }) => {
     const [users, setUsers] = useState(userData);
     const [errorMessage, setErrorMessage] = useState(""); //로그인 에러메세지
     const [registerEmail, setRegisterEmail] = useState(""); //회원 가입 이메일
-    const [registerPassword, setRegisterPassword] = useState(""); // 비밀번호
+    const [registerPassword, setRegisterPassword] = useState("") // 비밀번호
     const [passwordConfirm, setPasswordConfirm] = useState(""); // 비밀번호 확인
     const [nickname, setNickname] = useState(""); //닉네임
 
@@ -101,13 +101,13 @@ const AuthForm = ({ type }) => {
 
     const handleAuthErrors = (error) => {
         if (error.code === "auth/email-already-in-use") {
-            setErrorMessage("이미 등록된 회원입니다.");
+          setErrorMessage("이미 등록된 회원입니다.");
         } else if (error.code === "auth/missing-password") {
-            setErrorMessage("비밀번호를 입력해주세요.");
+          setErrorMessage("비밀번호를 입력해주세요.");
         } else if (error.code === "auth/weak-password") {
-            setErrorMessage("비밀번호를 6자리 이상 입력해주세요.");
-        } else if (error.code === "auth/invalid-login-credentials") {
-            setErrorMessage("이메일 혹은 비밀번호가 일치하지 않습니다.");
+          setErrorMessage("비밀번호를 6자리 이상 입력해주세요.");
+        } else if(error.code === "auth/invalid-login-credentials"){
+             setErrorMessage("이메일 혹은 비밀번호가 일치하지 않습니다.");
         }
     };
 
@@ -146,7 +146,6 @@ const AuthForm = ({ type }) => {
         } catch (error) {
             const errorMessage = error.message;
             console.log(errorMessage);
-
             handleAuthErrors(error);
         }
     };
@@ -154,13 +153,15 @@ const AuthForm = ({ type }) => {
     const submit = (e) => {
         e.preventDefault();
         if (type === "login") {
+
             const emaillogin = idRef.current.value;
             const passwordlogin = pswdRef.current.value;
 
             //const user = users.find((user) => user.id === id2);
             login(emaillogin, passwordlogin);
 
-            /* if (user) {
+           /* if (user) {
+
                 if (user.password === password2) {
                     console.log(user.name + " 님, 로그인에 성공했습니다.");
                     localStorage.clear();
@@ -175,6 +176,7 @@ const AuthForm = ({ type }) => {
                 // 주어진 ID를 가진 사용자를 찾을 수 없음
                     setErrorMessage("사용자를 찾을 수 없습니다.");
             }*/
+
         } else if (type === "register") {
             if (registerPassword !== passwordConfirm) {
                 setErrorMessage("비밀번호가 일치하지 않습니다.");
@@ -196,6 +198,7 @@ const AuthForm = ({ type }) => {
                     name="email"
                     placeholder="이메일"
                     type="email"
+
                     onChange={(e) => {
                         setRegisterEmail(e.target.value);
                         setErrorMessage("");
@@ -218,7 +221,9 @@ const AuthForm = ({ type }) => {
                     ref={pswdRef}
                     placeholder="비밀번호"
                     type="password"
+
                     onChange={(e) => {
+
                         setRegisterPassword(e.target.value);
                         setErrorMessage("");
                     }}
@@ -232,7 +237,8 @@ const AuthForm = ({ type }) => {
                         type="password"
                         onChange={(e) => {
                             setPasswordConfirm(e.target.value);
-                            setErrorMessage("");
+                            setErrorMessage(""); 
+
                         }}
                     />
                 )}
