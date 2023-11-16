@@ -8,11 +8,20 @@ import { addDays, isBefore, isAfter } from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange, DateRangePicker } from "react-date-range";
+import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
+import CloseIcon from "@mui/icons-material/Close";
 import { Message } from "iconsax-react";
 
 const style = {
+    maxHeight: "80vh",
+    overflowY: "auto",
+    "scrollbar-width": "none", // Firefox
+    "-ms-overflow-style": "none", // IE 및 엣지
+    "&::-webkit-scrollbar": {
+        display: "none", // Chrome 및 Safari
+    },
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -22,6 +31,7 @@ const style = {
     borderRadius: 5,
     boxShadow: 24,
     p: 4,
+    height: "auto",
 };
 
 export default function ProductModal(props) {
@@ -32,6 +42,7 @@ export default function ProductModal(props) {
             key: "selection",
         },
     ]);
+    const navigate = useNavigate();
     React.useEffect(() => {
         setState([
             {
@@ -60,6 +71,7 @@ export default function ProductModal(props) {
         <Modal
             keepMounted
             open={props.open}
+            height="auto"
             onClose={props.handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
@@ -70,8 +82,8 @@ export default function ProductModal(props) {
                         alt="제품 이미지"
                         src={props.productImage}
                         style={{
-                            width: 300,
-                            height: 300,
+                            width: 100,
+                            height: 100,
                             objectFit: "contain",
                         }}
                     />
@@ -147,12 +159,17 @@ export default function ProductModal(props) {
                     //     verticalAlign: "bottom",
                     // }}
                     sx={{
-                        position: "absolute",
+                        position: "relative",
                         bottom: 0,
-                        right: 0,
-                        margin: 3,
+                        left: 300,
+                        // marginLeft: 4,
                     }}
                     endIcon={<Message size="16" color="white" />}
+                    onClick={() => {
+                        navigate("/chat", {
+                            state: { value: props.dregisteredUserId },
+                        });
+                    }}
                 >
                     대화하기
                 </Button>
