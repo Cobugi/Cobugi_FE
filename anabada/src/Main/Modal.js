@@ -8,8 +8,10 @@ import { addDays, isBefore, isAfter } from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange, DateRangePicker } from "react-date-range";
+import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
+import CloseIcon from "@mui/icons-material/Close";
 import { Message } from "iconsax-react";
 import CloseIcon from '@mui/icons-material/Close';
 const style = {
@@ -40,6 +42,7 @@ export default function ProductModal(props) {
             key: "selection",
         },
     ]);
+    const navigate = useNavigate();
     React.useEffect(() => {
         setState([
             {
@@ -68,6 +71,7 @@ export default function ProductModal(props) {
         <Modal
             keepMounted
             open={props.open}
+            height="auto"
             onClose={props.handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
@@ -169,13 +173,18 @@ export default function ProductModal(props) {
                     // }}
                     sx={{
                         position: "relative",
-                        bottom: 0,
                         // right: 0,
                         
                         left:300,
                         //margin: 3,
+
                     }}
                     endIcon={<Message size="16" color="white" />}
+                    onClick={() => {
+                        navigate("/chat", {
+                            state: { value: props.dregisteredUserId },
+                        });
+                    }}
                 >
                     대화하기
                 </Button>
