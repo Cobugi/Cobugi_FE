@@ -10,6 +10,7 @@ import VerticalTabs from "./Chatting/ChatList";
 import ChatPage from "./Chatting/ChatPage";
 import MainTab from "./Main/Tabs";
 import MyPageIndex from "./MyPage/MyPageIndex"
+import RegsiterForm from "./Register/RegisterForm";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/mypage" element={<MyPageIndex />}/>
+                <Route path="/registerform" element={<RegsiterForm/>}/>
             </Routes>
         </BrowserRouter>
     );
