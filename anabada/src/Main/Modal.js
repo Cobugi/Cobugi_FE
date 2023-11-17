@@ -13,7 +13,7 @@ import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import CloseIcon from "@mui/icons-material/Close";
 import { Message } from "iconsax-react";
-import CloseIcon from '@mui/icons-material/Close';
+
 const style = {
     maxHeight: "80vh",
     overflowY: "auto",
