@@ -3,7 +3,8 @@
 import React from "react";
 import BookmarkItem from "./BookmarkItem";
 import UserData from "../Data/UsersData.json";
-import { List } from "@mui/material";
+import { List, Typography } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 
 /*
  * json 구조
@@ -23,12 +24,16 @@ const Bookmark = ({ userId }) => {
 
   return (
     <>
-      <h1>북마크 정보</h1>
-      <List sx={{ bgColor: "blue" }}>
-        {bookMarkData.map(({ lendingProductId }, idx) => (
-          <BookmarkItem ProductId={lendingProductId} key={`${userId}-${idx}`} />
-        ))}
-      </List>
+        <>
+            <Paper sx={{height:"500px", width:"300px", backgroundColor:"white", borderRadius:5, border:0, padding:"10px", elevation: 3}}>
+                  <Typography variant="h4" align="center" margin={2}>북마크</Typography>
+                  <List sx={{ bgColor: "blue" }}>
+                    {bookMarkData.map(({ lendingProductId }, idx) => (
+                      <BookmarkItem ProductId={lendingProductId} key={`${userId}-${idx}`} />
+                    ))}
+                  </List>
+            </Paper>
+        </>
     </>
   );
 };
