@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import { Message } from "iconsax-react";
+
 import CloseIcon from "@mui/icons-material/Close";
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth";
