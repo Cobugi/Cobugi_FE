@@ -13,7 +13,7 @@ const Channel = ({ id = null }) => {
 
     // firestore 에서 해당 채널 id의 컬렉션 가져옴. 없으면 새로 생성됨. (여기서 채널은 채팅방을 의미)
     const messagesRef = db
-        .collection(`AllMessages`)
+        .collection(`messages`)
         .doc(`${id}`)
         .collection(`messages-${id}`);
     // 0. 에서 작성한 useFirestoreQuery 로 도큐먼트 가져옴

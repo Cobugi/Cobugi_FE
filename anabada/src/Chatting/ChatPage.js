@@ -6,7 +6,7 @@ const ChatPage = (props) => {
     // const router = useRouter();
     const currentUser = localStorage.getItem("currentUser");
     console.log(currentUser);
-    return <>{currentUser && <Channel id={props.email} />}</>;
+    return <>{currentUser && <Channel id={props.room} />}</>;
 };
 
 export default ChatPage;
