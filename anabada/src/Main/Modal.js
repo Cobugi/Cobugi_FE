@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { addDays, isBefore, isAfter } from "date-fns";
+import { addDays, isBefore, isAfter, getQuarter } from "date-fns";
+import { firebaseConfig } from "../firebase-config";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -11,14 +12,16 @@ import { DateRange, DateRangePicker } from "react-date-range";
 import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
-import CloseIcon from "@mui/icons-material/Close";
 import { Message } from "iconsax-react";
 
+import CloseIcon from "@mui/icons-material/Close";
+import firebase from "firebase/compat/app";
+import { getAuth } from "firebase/auth";
 const style = {
     maxHeight: "80vh",
     overflowY: "auto",
     "scrollbar-width": "none", // Firefox
-    "-ms-overflow-style": "none", // IE 및 엣지
+    "-ms-overflow-style": "none", // IE 및 엣지]
     "&::-webkit-scrollbar": {
         display: "none", // Chrome 및 Safari
     },
@@ -67,6 +70,35 @@ export default function ProductModal(props) {
 
         return acc;
     }, []);
+    const firebaseNew = () => {
+        firebase.initializeApp(firebaseConfig);
+        const currentUser = localStorage.getItem("currentUser");
+        firebase
+            .firestore()
+            .collection(`roomUsers`)
+            .doc(`${props.lendingProductId}${currentUser}`)
+            .set({
+                receiver: `${props.registeredUserId}`,
+                sender: `${currentUser}`,
+            });
+        firebase
+            .firestore()
+            .collection(`userOwnedRooms`)
+            .doc(`${props.lendingProductId}${currentUser}`)
+            .set({
+                room: `${props.lendingProductId}${currentUser}`,
+                user: `${props.registeredUserId}`,
+            });
+        firebase
+            .firestore()
+            .collection(`userOwnedRooms`)
+            .doc(`${props.lendingProductId}${props.registeredUserId}`)
+            .set({
+                room: `${props.lendingProductId}${currentUser}`,
+                user: `${currentUser}`,
+            });
+        navigate("/chat");
+    };
     return (
         <Modal
             keepMounted
@@ -75,20 +107,18 @@ export default function ProductModal(props) {
             onClose={props.handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
-            
         >
-          
             <Box sx={{ ...style, position: "relative" }}>
-            <CloseIcon
-             onClick ={props.handleClose}
-             sx={{
-                position: "relative",
-                // bottom: 0,
-                // right: 0,
-                // margin: 3,
-                left:410
-            }}
-            />
+                <CloseIcon
+                    onClick={props.handleClose}
+                    sx={{
+                        position: "relative",
+                        // bottom: 0,
+                        // right: 0,
+                        // margin: 3,
+                        left: 410,
+                    }}
+                />
                 <Box sx={{ width: 200 }}>
                     <img
                         alt="제품 이미지"
@@ -154,17 +184,16 @@ export default function ProductModal(props) {
                         {props.place}
                     </Typography>
                 </Typography>
-             
-                    <DateRange
-                        style={{ width: "400px" }} 
-                        editableDateInputs={true}
-                        onChange={(item) => setState([item.selection])}
-                        moveRangeOnFirstSelection={false}
-                        locale={locales["ko"]}
-                        ranges={state}
-                        disabledDates={disabledDates}
-                    />
-                
+
+                <DateRange
+                    style={{ width: "400px" }}
+                    editableDateInputs={true}
+                    onChange={(item) => setState([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    locale={locales["ko"]}
+                    ranges={state}
+                    disabledDates={disabledDates}
+                />
 
                 <Button
                     variant="contained"
@@ -174,17 +203,12 @@ export default function ProductModal(props) {
                     sx={{
                         position: "relative",
                         // right: 0,
-                        
-                        left:300,
-                        //margin: 3,
 
+                        left: 300,
+                        //margin: 3,
                     }}
                     endIcon={<Message size="16" color="white" />}
-                    onClick={() => {
-                        navigate("/chat", {
-                            state: { value: props.dregisteredUserId },
-                        });
-                    }}
+                    onClick={firebaseNew}
                 >
                     대화하기
                 </Button>

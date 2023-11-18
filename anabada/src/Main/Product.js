@@ -53,7 +53,7 @@ export default function Product(props) {
                             color="#707070"
                             sx={{ fontSize: "11px", marginBottom: "5px" }}
                         >
-                            {props.registereUserName}
+                            {props.registeredUserName}
                         </Typography>
                         <Typography
                             gutterBottom

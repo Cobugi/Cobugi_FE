@@ -66,15 +66,16 @@ function a11yProps(index) {
 
 export default function VerticalTabs() {
     const location = useLocation();
-    const email = location.state.value;
     const [value, setValue] = React.useState(0);
     const [collections, setCollections] = React.useState([]);
 
     firebase.initializeApp(firebaseConfig);
     const firestore = firebase.firestore();
-    const collectionsRef = firestore.collection("AllMessages");
-
-    const collectionList = useFirestoreQuery(collectionsRef);
+    const collectionsRef = firestore.collection("userOwnedRooms");
+    const currentUser = localStorage.getItem("currentUser");
+    const collectionList = useFirestoreQuery(
+        collectionsRef.where("user", "==", `${currentUser}`)
+    );
 
     console.log(collectionList);
     const handleChange = (event, newValue) => {
@@ -108,7 +109,7 @@ export default function VerticalTabs() {
                 <Box sx={{ flex: 1, width: "100%" }}>
                     {collectionList.map((collection, index) => (
                         <CustomTabPanel key={index} value={value} index={index}>
-                            <ChatPage email={email} />
+                            <ChatPage room={collection.room} />
                         </CustomTabPanel>
                     ))}
                 </Box>
