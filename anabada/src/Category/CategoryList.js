@@ -6,42 +6,42 @@ import List from "../Main/List";
 import productData from "../Data/LendingProductsData.json";
 
 export default function CategoryList() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [filteredProductData, setFilteredProductData] = useState(productData);
-  const [searchText, setSearchText] = useState(""); // 추가
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [filteredProductData, setFilteredProductData] = useState(productData);
+    const [searchText, setSearchText] = useState(""); // 추가
 
-  const handleSearch = (text) => {
-    setSearchText(text);
-  };
+    const handleSearch = (text) => {
+        setSearchText(text);
+    };
 
-  return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ButtonGroup
-          variant="outlined"
-          aria-label="outlined button group"
-          sx={{ marginTop: "5px", marginBottom: "20px" }}
-        >
-          <CategoryBtn
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-        </ButtonGroup>
-      </div>
-      <hr style={{ border: "1px solid #B3B3B3", opacity: "0.7" }} />
-      <List
-        selectedCategory={selectedCategory}
-        productData={filteredProductData}
-        type="lending"
-        searchText={searchText} // 추가
-        onSearch={handleSearch} // 추가
-      />
-    </>
-  );
+    return (
+        <>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <ButtonGroup
+                    variant="outlined"
+                    aria-label="outlined button group"
+                    sx={{ marginTop: "5px", marginBottom: "20px" }}
+                >
+                    <CategoryBtn
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
+                </ButtonGroup>
+            </div>
+            <hr style={{ border: "1px solid #B3B3B3", opacity: "0.7" }} />
+            <List
+                selectedCategory={selectedCategory}
+                productData={filteredProductData}
+                type="lending"
+                searchText={searchText} // 추가
+                onSearch={handleSearch} // 추가
+            />
+        </>
+    );
 }

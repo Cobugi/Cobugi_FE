@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import SearchBox from "./search";
 import Button from "@mui/material/Button";
 import { Edit } from "iconsax-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Message, ProfileCircle } from "iconsax-react";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
@@ -27,8 +27,6 @@ export default function PrimarySearchAppBar() {
     };
 
     useEffect(() => {
-        
-
         // Listen for changes in the user's login status
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
@@ -56,47 +54,52 @@ export default function PrimarySearchAppBar() {
             });
     };
 
-    
     const handleChatButtonClick = () => {
         // 현재 로그인한 사용자 가져오기
         const currentUser = auth.currentUser;
-      
+
         if (currentUser) {
-          // 사용자가 로그인되어 있으면 대화하기 기능 수행
-          
+            // 사용자가 로그인되어 있으면 대화하기 기능 수행
         } else {
-          // 사용자가 로그인되어 있지 않으면 다이얼로그 표시 및 로그인 창으로 이동
-          alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");
-          // 로그인 페이지로 이동하는 코드를 추가
-          navigate("/signin");
+            // 사용자가 로그인되어 있지 않으면 다이얼로그 표시 및 로그인 창으로 이동
+            alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");
+            // 로그인 페이지로 이동하는 코드를 추가
+            navigate("/signin");
         }
-      };
+    };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Box position="static" color="">
                 <Toolbar>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{
-                            display: { xs: "none", sm: "block" },
-                            margin: "25px 20px 0 0",
-                        }}
-                    >
-                        <img
-                            alt="logo"
-                            src="/anabada_logo.jpg"
-                            width="90px"
-                            height="50px"
-                        ></img>
-                    </Typography>
+                    <Link to="/">
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{
+                                display: { xs: "none", sm: "block" },
+                                marginBottom: "20px",
+                                marginTop: "20px",
+                            }}
+                        >
+                            <img
+                                alt="logo"
+                                src="/anabada_logo.jpg"
+                                width="90px"
+                                height="50px"
+                            ></img>
+                        </Typography>
+                    </Link>
                     <Box sx={{ flexGrow: 1 }} />
                     {/* <SearchBox /> */}
                     <Box sx={{ flexGrow: 1 }} />
                     <div style={{ marginRight: "20px" }}>
-                        <Button variant="contained" style={buttonStyle} onClick={handleChatButtonClick}>
+                        <Button
+                            variant="contained"
+                            style={buttonStyle}
+                            onClick={handleChatButtonClick}
+                        >
                             <span style={{ marginRight: 12 + "px" }}>
                                 물품등록
                             </span>

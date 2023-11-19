@@ -82,12 +82,6 @@ export default function Product(props) {
                                 {props.place}
                             </Typography>
                         </Grid>
-                        <Grid item>
-                            <div style={{ color: "#7E7E7E", align: "right" }}>
-                                <FaStar color="red" />
-                                4.0
-                            </div>
-                        </Grid>
                     </Grid>
                 </CardContent>
             </CardActionArea>
@@ -111,8 +105,6 @@ export default function Product(props) {
             </div>
 
             <ProductModal {...props} open={open} handleClose={handleClose} />
-            
         </Card>
     );
 }
-

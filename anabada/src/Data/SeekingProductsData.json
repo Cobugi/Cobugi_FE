@@ -1,256 +1,244 @@
 [
     {
-        "seekingProductId" : "0",
+        "ProductId": "0",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "명품자바프로그래밍 구합니다",
-        "productImage" : "/Book.jpg",
-        "productName" : "명품자바프로그래밍",
-        "productDescription" : "1일 3000원에 구해봅니다.",
-        "productCartegory" :"5",
-        "productPrice" : "3000",
+        "productTitle": "명품자바프로그래밍 구합니다",
+        "productImage": "/Book.jpg",
+        "productName": "명품자바프로그래밍",
+        "productDescription": "1일 3000원에 구해봅니다.",
+        "productCartegory": "5",
+        "productPrice": "3000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "1",
+        "seekingProductId": "1",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "닌텐도 스위치 구합니다.",
-        "productImage" : "",
-        "productName" : "닌텐도 스위치",
-        "productDescription" : "닌텐도 구합니다 1일 5000원",
-        "productCartegory" :"8",
-        "productPrice" : "5000",
+        "productTitle": "닌텐도 스위치 구합니다.",
+        "productImage": "",
+        "productName": "닌텐도 스위치",
+        "productDescription": "닌텐도 구합니다 1일 5000원",
+        "productCartegory": "8",
+        "productPrice": "5000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
+        "state": "0",
 
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "2",
+        "seekingProductId": "2",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "젤다의 전설 스위치 칩 구합니다",
-        "productImage" : "",
-        "productName" : "닌텐도 스위치 칩 젤다의 전설",
-        "productDescription" : "1일 3000원에 구해봅니다.",
-        "productCartegory" :"8",
-        "productPrice" : "3000",
+        "productTitle": "젤다의 전설 스위치 칩 구합니다",
+        "productImage": "",
+        "productName": "닌텐도 스위치 칩 젤다의 전설",
+        "productDescription": "1일 3000원에 구해봅니다.",
+        "productCartegory": "8",
+        "productPrice": "3000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "1",   
+        "state": "1",
 
-        "rentalDate" : "2023.11.08",
-        "returnDate" :"2023.11.10", 
-        "lendingUserId" : "user2@2",
-        "lendingUserName" : "user2@2"
- 
+        "rentalDate": "2023.11.08",
+        "returnDate": "2023.11.10",
+        "lendingUserId": "user2@2",
+        "lendingUserName": "user2@2"
     },
     {
-        "seekingProductId" : "3",
+        "seekingProductId": "3",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "전자레인지 구합니다",
-        "productImage" : "",
-        "productName" : "전자레인지",
-        "productDescription" : "1일 5000원에 구해봅니다",
-        "productCartegory" :"3",
-        "productPrice" : "5000",
+        "productTitle": "전자레인지 구합니다",
+        "productImage": "",
+        "productName": "전자레인지",
+        "productDescription": "1일 5000원에 구해봅니다",
+        "productCartegory": "3",
+        "productPrice": "5000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "4",
+        "seekingProductId": "4",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "통기타 구합니다",
-        "productImage" : "",
-        "productName" : "통기타",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "통기타 구합니다",
+        "productImage": "",
+        "productName": "통기타",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "5",
+        "seekingProductId": "5",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "일렉기타 구합니다",
-        "productImage" : "",
-        "productName" : "일렉기타",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "일렉기타 구합니다",
+        "productImage": "",
+        "productName": "일렉기타",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "6",
+        "seekingProductId": "6",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "드럼 구합니다",
-        "productImage" : "",
-        "productName" : "드럼",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "드럼 구합니다",
+        "productImage": "",
+        "productName": "드럼",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "7",
+        "seekingProductId": "7",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "피아노 구합니다",
-        "productImage" : "",
-        "productName" : "피아노",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "피아노 구합니다",
+        "productImage": "",
+        "productName": "피아노",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "8",
+        "seekingProductId": "8",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "트럼펫 구합니다",
-        "productImage" : "",
-        "productName" : "트럼펫",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "트럼펫 구합니다",
+        "productImage": "",
+        "productName": "트럼펫",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "9",
+        "seekingProductId": "9",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "스피커 구합니다",
-        "productImage" : "",
-        "productName" : "스피커",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "스피커 구합니다",
+        "productImage": "",
+        "productName": "스피커",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     },
     {
-        "seekingProductId" : "10",
+        "seekingProductId": "10",
 
-        "registeredUserId" : "user1@1",
-        "registeredUserName" : "user1",
+        "registeredUserId": "user1@1",
+        "registeredUserName": "user1",
 
-        "productTitle" : "베이스 구합니다",
-        "productImage" : "",
-        "productName" : "베이스",
-        "productDescription" : "1일 10000원에 구해봅니다",
-        "productCartegory" :"8",
-        "productPrice" : "10000",
+        "productTitle": "베이스 구합니다",
+        "productImage": "",
+        "productName": "베이스",
+        "productDescription": "1일 10000원에 구해봅니다",
+        "productCartegory": "8",
+        "productPrice": "10000",
 
-        "place" : "우촌관",
+        "place": "우촌관",
 
-        "state" : "0",
-    
-        "rentalDate" : "",
-        "returnDate" :"",
-        "lendingUserId" : "",
-        "lendingUserName" : ""
- 
+        "state": "0",
+
+        "rentalDate": "",
+        "returnDate": "",
+        "lendingUserId": "",
+        "lendingUserName": ""
     }
 ]
-
