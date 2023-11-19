@@ -97,25 +97,27 @@ const Channel = ({ id = null }) => {
             </div>
 
             {/* 채팅 입력 폼 생성 */}
-            <div className="w-full z-20 pb-safe bottom-0 fixed md:max-w-xl p-4 bg-gray-50">
-                <form onSubmit={handleOnSubmit} className="flex">
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        value={newMessage}
-                        onChange={handleOnChange}
-                        placeholder="메세지를 입력하세요"
-                        className="border rounded-full px-4 h-10 flex-1 mr-1 ml-1 "
-                    />
-                    <button
-                        type="submit"
-                        disabled={!newMessage}
-                        className="rounded-full bg-[#4470E1] h-8 w-8 flex items-center justify-center"
-                    >
-                        <ArrowUp size="26" color="white"/>
-                        {/* <BiSend className="text-white text-xl w-10" /> */}
-                    </button>
-                </form>
+            <div className="absolute" style={{ bottom: 0, width: "80%" }}>
+                <div className="w-full z-20 pb-safe p-4 bg-gray-50">
+                    <form onSubmit={handleOnSubmit} className="flex">
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            value={newMessage}
+                            onChange={handleOnChange}
+                            placeholder="메세지를 입력하세요"
+                            className="border rounded-full px-4 h-10 flex-1 mr-1 ml-1 "
+                        />
+                        <button
+                            type="submit"
+                            disabled={!newMessage}
+                            className="rounded-full bg-[#4470E1] h-8 w-8 flex items-center justify-center"
+                        >
+                            <ArrowUp size="26" color="white" />
+                            {/* <BiSend className="text-white text-xl w-10" /> */}
+                        </button>
+                    </form>
+                </div>
             </div>
         </>
     );

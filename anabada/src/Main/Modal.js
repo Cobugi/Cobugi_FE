@@ -84,31 +84,47 @@ export default function ProductModal(props) {
         const messagesRef = firebase
             .firestore()
             .collection(`messages`)
-            .doc(`${props.lendingProductId}${currentUser}`)
-            .collection(`messages-${props.lendingProductId}${currentUser}`);
+            .doc(`${props.type}${props.ProductId}${currentUser}`)
+            .collection(
+                `messages-${props.type}${props.ProductId}${currentUser}`
+            );
+        if (props.type === "lending") {
+            const selectedStartDate = state[0].startDate;
+            const selectedEndDate = state[0].endDate;
 
-        const selectedStartDate = state[0].startDate;
-        const selectedEndDate = state[0].endDate;
+            const formattedStartDate = format(
+                selectedStartDate,
+                "yyyy년 MM월 dd일"
+            );
+            const formattedEndDate = format(
+                selectedEndDate,
+                "yyyy년 MM월 dd일"
+            );
 
-        const formattedStartDate = format(
-            selectedStartDate,
-            "yyyy년 MM월 dd일"
-        );
-        const formattedEndDate = format(selectedEndDate, "yyyy년 MM월 dd일");
-
-        messagesRef.add({
-            text: `대여 요청: ${formattedStartDate} ~ ${formattedEndDate}`,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            uid: currentUser,
-            displayName: currentUser,
-            photoURL: currentUser,
-            isRead: false,
-        });
+            messagesRef.add({
+                text: `${props.productName} 대여 요청합니다!
+                   대여기간: ${formattedStartDate} ~ ${formattedEndDate}`,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                uid: currentUser,
+                displayName: currentUser,
+                photoURL: currentUser,
+                isRead: false,
+            });
+        } else {
+            messagesRef.add({
+                text: `${props.productName} 대여해드립니다!`,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                uid: currentUser,
+                displayName: currentUser,
+                photoURL: currentUser,
+                isRead: false,
+            });
+        }
 
         firebase
             .firestore()
             .collection(`roomUsers`)
-            .doc(`${props.lendingProductId}${currentUser}`)
+            .doc(`${props.type}${props.ProductId}${currentUser}`)
             .set({
                 receiver: `${props.registeredUserId}`,
                 sender: `${currentUser}`,
@@ -117,18 +133,18 @@ export default function ProductModal(props) {
         firebase
             .firestore()
             .collection(`userOwnedRooms`)
-            .doc(`${props.lendingProductId}${currentUser}`)
+            .doc(`${props.type}${props.ProductId}${currentUser}`)
             .set({
-                room: `${props.lendingProductId}${currentUser}`,
+                room: `${props.type}${props.ProductId}${currentUser}`,
                 user: `${props.registeredUserId}`,
             });
 
         firebase
             .firestore()
             .collection(`userOwnedRooms`)
-            .doc(`${props.lendingProductId}${props.registeredUserId}`)
+            .doc(`${props.type}${props.ProductId}${props.registeredUserId}`)
             .set({
-                room: `${props.lendingProductId}${currentUser}`,
+                room: `${props.type}${props.ProductId}${currentUser}`,
                 user: `${currentUser}`,
             });
 

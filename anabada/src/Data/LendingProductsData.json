@@ -1,6 +1,6 @@
 [
     {
-        "lendingProductId": "0",
+        "ProductId": "0",
 
         "registeredUserId": "user1@gmail.com",
         "registeredUserName": "user1",
@@ -83,7 +83,7 @@
         "reservedUsersInfo": []
     },
     {
-        "lendingProductId": "3",
+        "ProductId": "3",
 
         "registeredUserId": "user3@gmail.com",
         "registeredUserName": "user3",

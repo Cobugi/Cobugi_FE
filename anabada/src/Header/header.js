@@ -79,7 +79,8 @@ export default function PrimarySearchAppBar() {
                             component="div"
                             sx={{
                                 display: { xs: "none", sm: "block" },
-                                margin: "25px 20px 0 0",
+                                marginBottom: "20px",
+                                marginTop: "20px",
                             }}
                         >
                             <img

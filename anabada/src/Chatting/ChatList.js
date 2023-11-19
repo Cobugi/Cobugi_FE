@@ -10,6 +10,7 @@ import { firebaseConfig } from "../firebase-config";
 import { useFirestoreQuery } from "./hooks";
 import ChatPage from "./ChatPage";
 import { useLocation } from "react-router-dom";
+import PrimarySearchAppBar from "../Header/header";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -84,6 +85,8 @@ export default function VerticalTabs() {
 
     return (
         <>
+            <PrimarySearchAppBar />
+            <hr />
             <Box sx={{ display: "flex" }}>
                 <Box
                     sx={{
@@ -102,7 +105,14 @@ export default function VerticalTabs() {
                         sx={{ borderRight: 1, borderColor: "divider" }}
                     >
                         {collectionList.map((collection, index) => (
-                            <Tab key={index} label={collection.id.replace(/^\d+/, '').split('@')[0]} />
+                            <Tab
+                                key={index}
+                                label={
+                                    collection.id
+                                        .replace(/\D*\d/, " ")
+                                        .split("@")[0]
+                                }
+                            />
                         ))}
                     </Tabs>
                 </Box>
