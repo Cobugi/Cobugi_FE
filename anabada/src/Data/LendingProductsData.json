@@ -16,8 +16,8 @@
 
         "state": "0",
 
-        "rentalDate": "",
-        "returnDate": "",
+        "rentalDate": "2023-11-10",
+        "returnDate": "2023-11-30",
         "borrowedUserId": "",
         "borrowedUserName": "",
 
@@ -51,8 +51,8 @@
 
         "state": "0",
 
-        "rentalDate": "",
-        "returnDate": "",
+        "rentalDate": "2023-11-10",
+        "returnDate": "2023-11-30",
         "borrowedUserId": "",
         "borrowedUserName": "",
 

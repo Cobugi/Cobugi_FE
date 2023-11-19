@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { formatRelative } from "date-fns";
 // import { imageUrl, useCurrentUser, timeFormat } from "@lib/frontend";
-
+import { Typography } from "@mui/material";
 const Message = ({
     createdAt = null,
     uid = "",
@@ -39,30 +39,37 @@ const Message = ({
                                 height={45}
                             />
                         </div>
+                    
+                    
                     </>
+                    
                 )}
                 {/* 채팅 내용. 사용자 별로 색깔 구분 */}
+              
                 <div
+                    className={`w-10 ${
+                        uid === currentUser ? "" : "mr-2"
+                    }`}
+                >
+                    <Typography
+                        sx={{ fontSize: "13px", marginBottom: "20px" }}
+                        color="#333333"
+                    >
+                    {uid.split('@')[0]}  
+                    </Typography>          
+                </div>
+
+                <div
+                
                     className={`p-2 rounded-lg  ${
                         uid === currentUser
-                            ? "bg-red-400 text-white "
+                            ? "bg-[#4470E1] text-white "
                             : "bg-gray-100"
                     }`}
                 >
                     {text}
                 </div>
-                <div className="text-gray-400 text-xs mx-2 flex flex-col">
-                    {createdAt?.seconds ? (
-                        <span
-                            className={`text-gray-500 text-xs ${
-                                uid === currentUser && "flex-row-reverse"
-                            }`}
-                        >
-                            {/* 읽음 & 안읽음 표시, 시간 표 */}
-                            {/* {new Date(createdAt.seconds * 1000)} */}
-                        </span>
-                    ) : null}
-                </div>
+                
             </div>
         </>
     );
@@ -75,6 +82,7 @@ Message.propTypes = {
     }),
     displayName: PropTypes.string,
     photoURL: PropTypes.string,
+    email: PropTypes.string,
 };
 
 export default Message;

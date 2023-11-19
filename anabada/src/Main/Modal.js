@@ -13,10 +13,11 @@ import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
 import { Message } from "iconsax-react";
-
 import CloseIcon from "@mui/icons-material/Close";
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth";
+import { format } from "date-fns";
+
 const style = {
     maxHeight: "80vh",
     overflowY: "auto",
@@ -46,6 +47,8 @@ export default function ProductModal(props) {
         },
     ]);
     const navigate = useNavigate();
+    const currentUser = localStorage.getItem("currentUser");
+
     React.useEffect(() => {
         setState([
             {
@@ -55,6 +58,9 @@ export default function ProductModal(props) {
             },
         ]);
     }, []);
+
+    const isChatButtonDisabled = currentUser === props.registeredUserId;
+    
     const disabledDates = props.reservedUsersInfo?.reduce((acc, reserved) => {
         // 예약된 날짜 범위를 disabledDates 배열에 추가
         const reservedStartDate = new Date(reserved.reservedStartDate);
@@ -73,32 +79,75 @@ export default function ProductModal(props) {
     const firebaseNew = () => {
         firebase.initializeApp(firebaseConfig);
         const currentUser = localStorage.getItem("currentUser");
+    
+        
+        const messagesRef = firebase
+          .firestore()
+          .collection(`messages`)
+          .doc(`${props.lendingProductId}${currentUser}`)
+          .collection(`messages-${props.lendingProductId}${currentUser}`);
+    
+        const selectedStartDate = state[0].startDate;
+        const selectedEndDate = state[0].endDate;
+    
+        const formattedStartDate = format(selectedStartDate, "yyyy년 MM월 dd일");
+        const formattedEndDate = format(selectedEndDate, "yyyy년 MM월 dd일");
+    
+        messagesRef.add({
+          text: `대여 요청: ${formattedStartDate} ~ ${formattedEndDate}`,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          uid: currentUser,
+          displayName: currentUser,
+          photoURL: currentUser,
+          isRead: false,
+        });
+    
         firebase
-            .firestore()
-            .collection(`roomUsers`)
-            .doc(`${props.lendingProductId}${currentUser}`)
-            .set({
-                receiver: `${props.registeredUserId}`,
-                sender: `${currentUser}`,
-            });
+          .firestore()
+          .collection(`roomUsers`)
+          .doc(`${props.lendingProductId}${currentUser}`)
+          .set({
+            receiver: `${props.registeredUserId}`,
+            sender: `${currentUser}`,
+          });
+    
         firebase
-            .firestore()
-            .collection(`userOwnedRooms`)
-            .doc(`${props.lendingProductId}${currentUser}`)
-            .set({
-                room: `${props.lendingProductId}${currentUser}`,
-                user: `${props.registeredUserId}`,
-            });
+          .firestore()
+          .collection(`userOwnedRooms`)
+          .doc(`${props.lendingProductId}${currentUser}`)
+          .set({
+            room: `${props.lendingProductId}${currentUser}`,
+            user: `${props.registeredUserId}`,
+          });
+    
         firebase
-            .firestore()
-            .collection(`userOwnedRooms`)
-            .doc(`${props.lendingProductId}${props.registeredUserId}`)
-            .set({
-                room: `${props.lendingProductId}${currentUser}`,
-                user: `${currentUser}`,
-            });
+          .firestore()
+          .collection(`userOwnedRooms`)
+          .doc(`${props.lendingProductId}${props.registeredUserId}`)
+          .set({
+            room: `${props.lendingProductId}${currentUser}`,
+            user: `${currentUser}`,
+          });
+    
         navigate("/chat");
     };
+    const auth = getAuth();
+
+// 대화하기 버튼 클릭 이벤트 핸들러
+const handleChatButtonClick = () => {
+  // 현재 로그인한 사용자 가져오기
+  const currentUser = auth.currentUser;
+
+  if (currentUser) {
+    // 사용자가 로그인되어 있으면 대화하기 기능 수행
+    firebaseNew();
+  } else {
+    // 사용자가 로그인되어 있지 않으면 다이얼로그 표시 및 로그인 창으로 이동
+    alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");
+    // 로그인 페이지로 이동하는 코드를 추가
+    navigate("/signin");
+  }
+};
     return (
         <Modal
             keepMounted
@@ -143,8 +192,9 @@ export default function ProductModal(props) {
                         src="/broken-image.jpg"
                         sx={{ width: 24, height: 24, marginRight: 1 }}
                     />
-                    {props.writer}
+                    {props.registeredUserName}
                 </Typography>
+                
                 <Typography
                     gutterBottom
                     sx={{ fontSize: "15px", fontWeight: "bold" }}
@@ -158,6 +208,11 @@ export default function ProductModal(props) {
                 >
                     {props.productPrice} 원/일
                 </Typography>
+                {/* <Typography
+                    sx={{ fontSize: "13px", marginBottom: "20px" }}
+                >
+                    {props.rentalDate} ~ {props.returnDate}
+                </Typography> */}
                 <Typography sx={{ fontSize: "13px" }} component="div">
                     {props.productDescription}
                 </Typography>
@@ -194,7 +249,9 @@ export default function ProductModal(props) {
                     ranges={state}
                     disabledDates={disabledDates}
                 />
-
+                    <Typography sx={{ fontSize: "13px", marginLeft :"20px" }} color="#3056B9">
+                        * 날짜 선택 후 대화하기 버튼을 누르면 상대방에게 대여요청 <br/>메세지가 보내집니다.
+                    </Typography>
                 <Button
                     variant="contained"
                     // sx={{
@@ -208,7 +265,8 @@ export default function ProductModal(props) {
                         //margin: 3,
                     }}
                     endIcon={<Message size="16" color="white" />}
-                    onClick={firebaseNew}
+                    onClick={handleChatButtonClick}
+                    disabled={isChatButtonDisabled}
                 >
                     대화하기
                 </Button>

@@ -102,7 +102,7 @@ export default function VerticalTabs() {
                         sx={{ borderRight: 1, borderColor: "divider" }}
                     >
                         {collectionList.map((collection, index) => (
-                            <Tab key={index} label={collection.id} />
+                            <Tab key={index} label={collection.id.replace(/^\d+/, '').split('@')[0]} />
                         ))}
                     </Tabs>
                 </Box>
