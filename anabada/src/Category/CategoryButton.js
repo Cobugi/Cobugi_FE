@@ -2,8 +2,6 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/system";
 import CATEGORY from "./CATEGORYS";
-import { useState } from "react";
-import Grid from "@mui/material/Grid";
 
 const MyStyledButton = styled(Button)(({ categoryActive }) => ({
   backgroundColor: categoryActive ? "#EEEEEE" : "white",
@@ -17,42 +15,45 @@ const MyStyledButton = styled(Button)(({ categoryActive }) => ({
     backgroundColor: categoryActive ? "#EEEEEE" : "#EEEEEE",
     borderColor: "#B3B3B3",
   },
-  pointerEvents: categoryActive ? "none" : "auto", // 변경된 부분
+  pointerEvents: categoryActive ? "none" : "auto",
 }));
 
+const containerStyle = {
+  display: "flex",
+  flexWrap: "wrap",  // Flexbox에서 강제로 한 줄에 담지 않음
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "80px",  // 버튼 간격 조절
+  
+};
+
+const divStyle = {
+  marginTop: "10px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 export default function CategoryBtn({ selectedCategory, setSelectedCategory }) {
-  const textStyle = {
-    fontSize: "14px",
-    whiteSpace: "nowrap",
-  };
-
-  const divstyle = {
-    marginTop: "10px",
-    display: "flex",
-    justifyContent: "center",
-    textAlign: "center",
-    fontSize: "14px",
-    whiteSpace: "nowrap",
-  };
-  
   return (
-    <Grid container spacing={11}>
+    <div style={containerStyle}>
       {CATEGORY.map((item, index) => (
-        <Grid item xs={1.1} key={item.id}>
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            <div>
-              <MyStyledButton
-                categoryActive={index === selectedCategory}
-                onClick={() =>  setSelectedCategory(index)}
-              >
-                {item.icon || <div className="empty-icon" />}
-              </MyStyledButton>
-            </div>
-            <div style={divstyle}>{item.text}</div>
+        <div key={item.id} style={divStyle}>
+          <div>
+            <MyStyledButton
+             sx={{
+             marginBottom:"15px"
+          }}
+              categoryActive={index === selectedCategory}
+              onClick={() => setSelectedCategory(index)}
+            >
+              {item.icon || <div className="empty-icon" />}
+            </MyStyledButton>
           </div>
-        </Grid>
+          <div style={{ fontSize: "14px", whiteSpace: "nowrap" }}>{item.text}</div>
+        </div>
       ))}
-    </Grid>
+    </div>
   );
 }

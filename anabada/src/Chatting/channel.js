@@ -5,6 +5,8 @@ import "firebase/compat/firestore";
 import { firebaseConfig } from "../firebase-config";
 import { useFirestoreQuery } from "./hooks";
 import Message from "./message";
+import { ArrowUp } from "iconsax-react";
+import { Typography } from "@mui/material";
 const Channel = ({ id = null }) => {
     // firebase initialize
     firebase.initializeApp(firebaseConfig);
@@ -103,13 +105,14 @@ const Channel = ({ id = null }) => {
                         value={newMessage}
                         onChange={handleOnChange}
                         placeholder="메세지를 입력하세요"
-                        className="border rounded-full px-4 h-10 flex-1 mr-1 ml-1"
+                        className="border rounded-full px-4 h-10 flex-1 mr-1 ml-1 "
                     />
                     <button
                         type="submit"
                         disabled={!newMessage}
-                        className="rounded-full bg-red-400 h-10 w-10"
+                        className="rounded-full bg-[#4470E1] h-8 w-8 flex items-center justify-center"
                     >
+                        <ArrowUp size="26" color="white"/>
                         {/* <BiSend className="text-white text-xl w-10" /> */}
                     </button>
                 </form>

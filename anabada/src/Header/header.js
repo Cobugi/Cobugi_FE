@@ -8,9 +8,14 @@ import { Edit } from "iconsax-react";
 import { useNavigate } from "react-router-dom";
 import { Message, ProfileCircle } from "iconsax-react";
 import { IconButton } from "@mui/material";
+import { useState } from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect } from "react";
 
 export default function PrimarySearchAppBar() {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const auth = getAuth();
 
     const buttonStyle = {
         width: "140px", // 가로 크기
@@ -20,6 +25,52 @@ export default function PrimarySearchAppBar() {
         color: "#4470E1",
         fontWeight: "bold",
     };
+
+    useEffect(() => {
+        
+
+        // Listen for changes in the user's login status
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+
+        // Unsubscribe when the component unmounts
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogout = () => {
+        const auth = getAuth();
+
+        // Sign out the user
+        signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+                console.log("User signed out");
+                // Clear currentUser in local storage
+                localStorage.setItem("currentUser", null);
+                // You can redirect or perform additional actions after successful logout.
+            })
+            .catch((error) => {
+                // An error happened.
+                console.error("Error during logout", error);
+            });
+    };
+
+    
+    const handleChatButtonClick = () => {
+        // 현재 로그인한 사용자 가져오기
+        const currentUser = auth.currentUser;
+      
+        if (currentUser) {
+          // 사용자가 로그인되어 있으면 대화하기 기능 수행
+          
+        } else {
+          // 사용자가 로그인되어 있지 않으면 다이얼로그 표시 및 로그인 창으로 이동
+          alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");
+          // 로그인 페이지로 이동하는 코드를 추가
+          navigate("/signin");
+        }
+      };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +82,7 @@ export default function PrimarySearchAppBar() {
                         component="div"
                         sx={{
                             display: { xs: "none", sm: "block" },
-                            margin: "20px",
+                            margin: "25px 20px 0 0",
                         }}
                     >
                         <img
@@ -42,10 +93,10 @@ export default function PrimarySearchAppBar() {
                         ></img>
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
-                    <SearchBox />
+                    {/* <SearchBox /> */}
                     <Box sx={{ flexGrow: 1 }} />
                     <div style={{ marginRight: "20px" }}>
-                        <Button variant="contained" style={buttonStyle}>
+                        <Button variant="contained" style={buttonStyle} onClick={handleChatButtonClick}>
                             <span style={{ marginRight: 12 + "px" }}>
                                 물품등록
                             </span>
@@ -53,7 +104,7 @@ export default function PrimarySearchAppBar() {
                         </Button>
                     </div>
 
-                    {localStorage.getItem("currentUSer") !== null ? (
+                    {!user ? (
                         <>
                             <Button
                                 variant="text"
@@ -80,7 +131,8 @@ export default function PrimarySearchAppBar() {
                                 variant="text"
                                 sx={{ fontWeight: "bold", color: "#333333" }}
                                 onClick={() => {
-                                    navigate("/signup");
+                                    handleLogout();
+                                    navigate("/");
                                 }}
                             >
                                 로그아웃
