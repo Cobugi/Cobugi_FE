@@ -16,105 +16,112 @@ export default function SearchBox({ onSearch }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [searchText, setSearchText] = React.useState("");
     const [state, setState] = React.useState([
-      {
-        startDate: new Date(),
-        endDate: addDays(new Date(), 1),
-        key: "selection",
-      },
+        {
+            startDate: new Date(),
+            endDate: addDays(new Date(), 1),
+            key: "selection",
+        },
     ]);
-  
+
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
-  
+
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
-  
+
     const handleSearch = () => {
-      onSearch(searchText);
-      handleClose();
+        onSearch(searchText);
+        handleClose();
     };
-  
+
     const handleCancelSelection = () => {
         // 선택 취소 버튼 클릭 시 state를 초기 값으로 설정
         setState([
-          {
-            startDate: null,
-            endDate: null,
-            key: "selection",
-          },
+            {
+                startDate: null,
+                endDate: null,
+                key: "selection",
+            },
         ]);
-      };
-  
+    };
+
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
-  
+
     return (
-      <Paper
-        component="form"
-        sx={{
-          p: "2px 4px",
-          display: "flex",
-          alignItems: "center",
-          width: 450,
-          borderRadius: "33px",
-          marginLeft: "170px",
-        }}
-      >
-        <Button
-          size="small"
-          endIcon={<Calendar size="24" color="#4470E1" />}
-          onClick={handleClick}
-        >
-          <div
-            style={{
-              color: "black",
-              fontSize: 13 + "px",
-              marginRight: 5 + "px",
-              marginLeft: 20 + "px",
+        <Paper
+            component="form"
+            sx={{
+                p: "2px 4px",
+                display: "flex",
+                alignItems: "center",
+                width: 450,
+                borderRadius: "33px",
+                marginLeft: "170px",
             }}
-          >
-             대여기간: {state[0].startDate ? state[0].startDate.toLocaleDateString() : ''} -{' '}
-  {state[0].endDate ? state[0].endDate.toLocaleDateString() : ''}
-          </div>
-        </Button>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
         >
-          <DateRange
-            style={{ width: "400px" }}
-            editableDateInputs={true}
-            onChange={(item) => setState([item.selection])}
-            moveRangeOnFirstSelection={false}
-            locale={locales["ko"]}
-            ranges={state}
-          />
-          <Button onClick={handleCancelSelection}><CloseIcon
-                   /> </Button>
-        </Popover>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <InputBase
-          sx={{ ml: 1, flex: 1, fontSize: 13 + "px" }}
-          placeholder="물품을 검색해보세요."
-          inputProps={{ "aria-label": "search google maps" }}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <IconButton
-          type="button"
-          sx={{ p: "10px", color: "#4470E1" }}
-          aria-label="search"
-          onClick={handleSearch}
-        >
-          <SearchNormal1 />
-        </IconButton>
-      </Paper>
+            <Button
+                size="small"
+                endIcon={<Calendar size="24" color="#4470E1" />}
+                onClick={handleClick}
+            >
+                <div
+                    style={{
+                        color: "black",
+                        fontSize: 13 + "px",
+                        marginRight: 5 + "px",
+                        marginLeft: 20 + "px",
+                    }}
+                >
+                    대여기간:{" "}
+                    {state[0].startDate
+                        ? state[0].startDate.toLocaleDateString()
+                        : ""}{" "}
+                    -{" "}
+                    {state[0].endDate
+                        ? state[0].endDate.toLocaleDateString()
+                        : ""}
+                </div>
+            </Button>
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                }}
+            >
+                <DateRange
+                    style={{ width: "400px" }}
+                    editableDateInputs={true}
+                    onChange={(item) => setState([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    locale={locales["ko"]}
+                    ranges={state}
+                />
+                <Button onClick={handleCancelSelection}>
+                    <CloseIcon />{" "}
+                </Button>
+            </Popover>
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <InputBase
+                sx={{ ml: 1, flex: 1, fontSize: 13 + "px" }}
+                placeholder="물품을 검색해보세요."
+                inputProps={{ "aria-label": "search google maps" }}
+                onChange={(e) => setSearchText(e.target.value)}
+            />
+            <IconButton
+                type="button"
+                sx={{ p: "10px", color: "#4470E1" }}
+                aria-label="search"
+                onClick={handleSearch}
+            >
+                <SearchNormal1 />
+            </IconButton>
+        </Paper>
     );
-  }
+}
