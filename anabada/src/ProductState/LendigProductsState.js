@@ -1,4 +1,4 @@
-import LendingProductsData from "../Data/LendingProductsData.json"
+import LendingProductsData from "../Data/"
 import { atom } from "recoil"
 
 export const lendingProductsState = atom({

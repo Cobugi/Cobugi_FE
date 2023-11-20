@@ -206,7 +206,8 @@ export default function ProductModal(props) {
                     color="#707070"
                     sx={{
                         fontSize: "11px",
-                        marginBottom: "5px",
+                        marginTop:"10px",
+                        marginBottom: "10px",
                         display: "flex",
                         alignItems: "center",
                     }}
@@ -317,8 +318,9 @@ export default function ProductModal(props) {
                             대여기간
                         </Typography>
                         <Typography sx={{ fontSize: "12px" }}>
-                            {props.rentalDate} ~ {props.returnDate}
+                            {props.startDate} ~ {props.lastDate}
                         </Typography>
+                        
                     </Box>
                 </Box>
                 {props.type === "lending" ? (
