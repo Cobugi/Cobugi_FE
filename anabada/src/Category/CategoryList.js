@@ -7,7 +7,6 @@ import productData from "../Data/LendingProductsData.json";
 
 export default function CategoryList() {
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [filteredProductData, setFilteredProductData] = useState(productData);
     const [searchText, setSearchText] = useState(""); // 추가
 
     const handleSearch = (text) => {
@@ -37,7 +36,7 @@ export default function CategoryList() {
             <hr style={{ border: "1px solid #B3B3B3", opacity: "0.7" }} />
             <List
                 selectedCategory={selectedCategory}
-                productData={filteredProductData}
+                productData={productData}
                 type="lending"
                 searchText={searchText} // 추가
                 onSearch={handleSearch} // 추가
