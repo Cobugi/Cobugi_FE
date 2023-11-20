@@ -109,7 +109,7 @@ export default function VerticalTabs() {
                                 key={index}
                                 label={
                                     collection.id
-                                        .replace(/\D*\d/, " ")
+                                        .replace(/\D*\d/, "")
                                         .split("@")[0]
                                 }
                             />

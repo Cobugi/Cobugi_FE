@@ -8,6 +8,13 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import { SearchNormal1 } from "iconsax-react";
+import { DateRange } from "react-date-range";
+import CloseIcon from "@mui/icons-material/Close";
+import { Calendar } from "iconsax-react";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
+import * as locales from "react-date-range/dist/locale";
+import Popover from "@mui/material/Popover";
 
 export default function List({ selectedCategory, productData, type }) {
     const userId = localStorage.getItem("userId");
@@ -18,6 +25,52 @@ export default function List({ selectedCategory, productData, type }) {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchText, setSearchText] = useState("");
+    const [dateRange, setDateRange] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+        },
+    ]);
+
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const applyFilters = () => {
+        let result = productData;
+
+        // 1. 물품 검색어에 대한 필터링
+        if (searchText) {
+            result = result.filter((product) => product.productTitle.includes(searchText));
+        }
+
+        // 2. 날짜 범위가 선택되었을 경우에만 적용
+        if (dateRange[0].startDate && dateRange[0].endDate) {
+            const startDate = dateRange[0].startDate;
+            const endDate = dateRange[0].endDate;
+
+            result = result.filter((product) => {
+                const productStartDate = new Date(product.startDate);
+                const productEndDate = new Date(product.lastDate);
+
+                return (
+                    (productStartDate >= startDate && productStartDate <= endDate) ||
+                    (productEndDate >= startDate && productEndDate <= endDate) ||
+                    (productStartDate <= startDate && productEndDate >= endDate)
+                );
+            });
+        }
+
+        // 3. 선택된 카테고리가 있다면 해당 카테고리에 대한 필터링
+        if (selectedCategory !== null && CATEGORY[selectedCategory]) {
+            const categoryId = CATEGORY[selectedCategory].id;
+            if (categoryId !== 0) {
+                result = result.filter((product) => product.productCartegory === categoryId.toString());
+            }
+        }
+
+        // 결과를 상태에 반영
+        setFilteredProducts(result);
+    };
 
     const showAllProducts = () => {
         setFilteredProducts(productData);
@@ -29,6 +82,16 @@ export default function List({ selectedCategory, productData, type }) {
         });
         setFilteredProducts(updatedProducts);
     };
+
+    useEffect(() => {
+        // 이 부분에서 검색어에 따라 필터링을 수행합니다.
+        applyFilters();
+    }, [searchText, productData]);
+
+    useEffect(() => {
+        // dateRange가 변경될 때마다 날짜에 따라 필터링을 수행합니다.
+        applyFilters();
+    }, [dateRange]);
 
     useEffect(() => {
         if (selectedCategory !== null && CATEGORY[selectedCategory]) {
@@ -46,24 +109,43 @@ export default function List({ selectedCategory, productData, type }) {
     }, [selectedCategory]);
 
     useEffect(() => {
-        // 이 부분에서 검색어에 따라 필터링을 수행합니다.
-        const searchFilteredProducts = productData.filter((product) =>
-            product.productTitle.includes(searchText)
-        );
-
-        setFilteredProducts(searchFilteredProducts);
-    }, [searchText, productData]);
+        // bookmarks 등이 변경될 때마다 필터링을 수행합니다.
+        applyFilters();
+    }, [bookmarks]);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentDisplayedProducts = filteredProducts.slice(
-        startIndex,
-        endIndex
-    );
+    const currentDisplayedProducts = filteredProducts.slice(startIndex, endIndex);
     const totalPageCount = Math.ceil(filteredProducts.length / itemsPerPage);
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
+    };
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleDateChange = (item) => {
+        setDateRange([item.selection]);
+    };
+
+    const handleCancelSelection = () => {
+        setDateRange([
+            {
+                startDate: null,
+                endDate: null,
+                key: "selection",
+            },
+        ]);
+    };
+
+    const handleSearch = (text) => {
+        setSearchText(text);
     };
 
     return (
@@ -71,25 +153,69 @@ export default function List({ selectedCategory, productData, type }) {
             <Paper
                 component="form"
                 sx={{
-                    p: "2px 4px",
                     display: "flex",
                     alignItems: "center",
-                    width: 450,
+                    p: "2px 4px",
+                    width: "27%",
                     borderRadius: "33px",
-                    marginLeft: "170px",
-                    marginBottom: "20px",
+                    marginTop: "30px",
+                    marginLeft: "50px",
                 }}
             >
+                <Button
+                    size="small"
+                    endIcon={<Calendar size="24" color="#4470E1" />}
+                    onClick={handleClick}
+                >
+                    <div
+                        style={{
+                            color: "black",
+                            fontSize: "13px",
+                            marginRight: "5px",
+                            marginLeft: "20px",
+                        }}
+                    >
+                        대여기간:{" "}
+                        {dateRange[0].startDate
+                            ? dateRange[0].startDate.toLocaleDateString()
+                            : ""}{" "}
+                        - {dateRange[0].endDate ? dateRange[0].endDate.toLocaleDateString() : ""}
+                    </div>
+                </Button>
+                <Popover
+                    id="simple-popover"
+                    open={Boolean(anchorEl)}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                    }}
+                >
+                    <DateRange
+                        style={{ width: "400px" }}
+                        editableDateInputs={true}
+                        onChange={handleDateChange}
+                        moveRangeOnFirstSelection={false}
+                        locale={locales["ko"]}
+                        ranges={dateRange}
+                    />
+                    <Button onClick={handleCancelSelection}>
+                        <CloseIcon />
+                    </Button>
+                </Popover>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <InputBase
-                    sx={{ ml: 1, flex: 1, fontSize: 13 + "px" }}
+                    sx={{ ml: 1, flex: 1, fontSize: "13px" }}
                     placeholder="물품을 검색해보세요."
                     inputProps={{ "aria-label": "search google maps" }}
-                    onChange={(e) => setSearchText(e.target.value)}
+                    onChange={(e) => handleSearch(e.target.value)}
                 />
                 <IconButton
                     type="button"
                     sx={{ p: "10px", color: "#4470E1" }}
                     aria-label="search"
+                    onClick={() => handleSearch(searchText)}
                 >
                     <SearchNormal1 />
                 </IconButton>
