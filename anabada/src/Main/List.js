@@ -15,13 +15,18 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import * as locales from "react-date-range/dist/locale";
 import Popover from "@mui/material/Popover";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { updateUserBookmarks } from "../ProductState/UsersState";
+import UsersData from "../Data/UsersData.json";
 
 export default function List({ selectedCategory, productData, type }) {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("currentUser");
     const itemsPerPage = 20;
 
-    
-
+    // const usersData = useRecoilValue(usersData); // 상태의 값을 가져옴
+    // const setUsersData = useSetRecoilState(usersData); // 상태를 설정하는 함수
+    const userBookmarks = useRecoilValue(updateUserBookmarks);
+    const setBookmarks = useSetRecoilState(updateUserBookmarks);
     const bookmarks =
         userData.find((el) => el.id === userId)?.bookMarkData || [];
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -221,9 +226,10 @@ export default function List({ selectedCategory, productData, type }) {
                 </Popover>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <InputBase
-                    sx={{ ml: 1, flex: 1, fontSize: "13px" }}
+                    sx={{ ml: 1, flex: 1, fontSize: 13 + "px" }}
                     placeholder="물품을 검색해보세요."
                     inputProps={{ "aria-label": "search google maps" }}
+                    onChange={(e) => setSearchText(e.target.value)}
                 />
                 <IconButton
                     type="button"
@@ -238,7 +244,15 @@ export default function List({ selectedCategory, productData, type }) {
             <Grid container spacing={5} sx={{ padding: "50px" }}>
                 {currentDisplayedProducts.map((product) => (
                     <Grid item xs={2.4} key={product.productId}>
-                        <Product {...product} type={type} />
+                        <Product
+                            {...product}
+                            type={type}
+                            isBookmarked={userBookmarks?.some(
+                                (item) => item.ProductId === product.ProductId
+                            )}
+                            update={setBookmarks}
+                            isLoggedIn={!!userId}
+                        />
                     </Grid>
                 ))}
             </Grid>

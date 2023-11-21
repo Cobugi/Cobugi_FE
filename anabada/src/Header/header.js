@@ -11,6 +11,7 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
+import { set } from "date-fns";
 
 export default function PrimarySearchAppBar() {
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ export default function PrimarySearchAppBar() {
                 // Sign-out successful.
                 console.log("User signed out");
                 // Clear currentUser in local storage
-                localStorage.setItem("currentUser", null);
+                localStorage.removeItem("currentUser");
                 // You can redirect or perform additional actions after successful logout.
             })
             .catch((error) => {
