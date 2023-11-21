@@ -15,8 +15,10 @@ import CircleIcon from "@mui/icons-material/Circle";
 
 const BookmarkItem = ({ ProductId }) => {
   const [products] = LendingProductsData.filter(
-    ({ lendingProductId }) => lendingProductId === ProductId
+    ({ ProductId }) => ProductId === ProductId
   );
+
+  console.log(products);
 
   return (
     <>
