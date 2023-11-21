@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 import ProductModal from "./Modal";
 import { getAuth } from "firebase/auth";
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
-// import { UsersState } from "../ProductState/UsersState";
+import { usersState } from "../ProductState/UsersState";
 
 export default function Product(props) {
     const [open, setOpen] = React.useState(false);
@@ -23,7 +23,7 @@ export default function Product(props) {
     const currentUser = localStorage.getItem("currentUser");
     const isUserLoggedIn = currentUser !== null;
     // const [user, setBookmarks] = useRecoilState(UsersState);
-    // const setBookmarks = useSetRecoilState(UsersState);
+    const setBookmarks = useSetRecoilState(usersState);
 
     console.log(currentUser !== null);
 
@@ -105,7 +105,7 @@ export default function Product(props) {
                             opacity: bookMarkIcon ? 1 : 0.8,
                         }}
                         onClick={() => {
-                            props.update(props.ProductId);
+                            setBookmarks(props.update(props.ProductId));
                         }}
                     />
                 )}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import Grid from "@mui/material/Grid";
-import userData from "../Data/UsersData.json";
 import CATEGORY from "../Category/CATEGORYS";
 import Pagination from "@mui/material/Pagination";
 import Paper from "@mui/material/Paper";
@@ -17,7 +16,6 @@ import * as locales from "react-date-range/dist/locale";
 import Popover from "@mui/material/Popover";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { updateUserBookmarks } from "../ProductState/UsersState";
-import UsersData from "../Data/UsersData.json";
 
 export default function List({ selectedCategory, productData, type }) {
     const userId = localStorage.getItem("currentUser");
@@ -25,10 +23,10 @@ export default function List({ selectedCategory, productData, type }) {
 
     // const usersData = useRecoilValue(usersData); // 상태의 값을 가져옴
     // const setUsersData = useSetRecoilState(usersData); // 상태를 설정하는 함수
-    const userBookmarks = useRecoilValue(updateUserBookmarks);
-    const setBookmarks = useSetRecoilState(updateUserBookmarks);
-    const bookmarks =
-        userData.find((el) => el.id === userId)?.bookMarkData || [];
+    const { userBookmarks, updateBookmark } =
+        useRecoilValue(updateUserBookmarks);
+    console.log(userBookmarks);
+    console.log(updateBookmark);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchText, setSearchText] = useState("");
@@ -121,11 +119,6 @@ export default function List({ selectedCategory, productData, type }) {
             showAllProducts();
         }
     }, [selectedCategory]);
-
-    useEffect(() => {
-        // bookmarks 등이 변경될 때마다 필터링을 수행합니다.
-        applyFilters();
-    }, [bookmarks]);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -250,7 +243,7 @@ export default function List({ selectedCategory, productData, type }) {
                             isBookmarked={userBookmarks?.some(
                                 (item) => item.ProductId === product.ProductId
                             )}
-                            update={setBookmarks}
+                            update={updateBookmark}
                             isLoggedIn={!!userId}
                         />
                     </Grid>

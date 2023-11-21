@@ -9,7 +9,7 @@ import SeekingList from "./Category/SeekingList";
 import VerticalTabs from "./Chatting/ChatList";
 import ChatPage from "./Chatting/ChatPage";
 import MainTab from "./Main/Tabs";
-import MyPageIndex from "./MyPage/MyPageIndex"
+import MyPageIndex from "./MyPage/MyPageIndex";
 import RegsiterForm from "./Register/RegisterForm";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                     path="/"
                     element={
                         <>
-                            
+                            <PrimarySearchAppBar />
                             <MainTab />
                         </>
                     }
@@ -29,8 +29,8 @@ function App() {
                 {/* <Route path="/chat" element={<ChatPage />} /> */}
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/mypage" element={<MyPageIndex />}/>
-                <Route path="/registerform" element={<RegsiterForm/>}/>
+                <Route path="/mypage" element={<MyPageIndex />} />
+                <Route path="/registerform" element={<RegsiterForm />} />
             </Routes>
         </BrowserRouter>
     );
