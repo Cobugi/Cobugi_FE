@@ -22,9 +22,10 @@ const MyPageIndex = () => {
     if (currentUser !== null) {
       changeUserId(currentUser.split("@")[0]);
     }
+    console.log(`userid : ${userId}`);
   }, []);
 
-  if (userId === null) {
+  if (userId !== null) {
     return (
       <Grid
         container
