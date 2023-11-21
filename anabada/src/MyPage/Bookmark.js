@@ -35,11 +35,8 @@ const Bookmark = ({ userId }) => {
           북마크
         </Typography>
         <List sx={{ bgColor: "blue" }}>
-          {bookMarkData.map(({ lendingProductId }, idx) => (
-            <BookmarkItem
-              productId={lendingProductId}
-              key={`${userId}-${idx}`}
-            />
+          {bookMarkData.map(({ ProductId }, idx) => (
+            <BookmarkItem productId={ProductId} key={`${userId}-${idx}`} />
           ))}
         </List>
       </Paper>

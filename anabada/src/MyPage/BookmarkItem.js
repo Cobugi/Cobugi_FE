@@ -17,12 +17,9 @@ import { lendingProductsState } from "../ProductState/LendigProductsState";
 
 const BookmarkItem = ({ productId }) => {
   const products = useRecoilValue(lendingProductsState);
-
   const [filteredProducts] = products.filter(
-    ({ ProductId }) => ProductId === productId
+    ({ ProductId }) => productId === productId
   );
-
-  console.log(filteredProducts);
 
   return (
     <>
