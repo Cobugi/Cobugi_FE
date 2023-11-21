@@ -20,6 +20,8 @@ export default function List({ selectedCategory, productData, type }) {
     const userId = localStorage.getItem("userId");
     const itemsPerPage = 20;
 
+    
+
     const bookmarks =
         userData.find((el) => el.id === userId)?.bookMarkData || [];
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -166,7 +168,7 @@ export default function List({ selectedCategory, productData, type }) {
                     display: "flex",
                     alignItems: "center",
                     p: "2px 4px",
-                    // width: "27%",
+                    width: "27%",
                     borderRadius: "33px",
                     marginTop: "30px",
                     marginLeft: "50px",
@@ -174,7 +176,7 @@ export default function List({ selectedCategory, productData, type }) {
             >
                 <Button
                     size="small"
-                    endIcon={<Calendar size="24" color="#4470E1" />}
+                    // endIcon={<Calendar size="24" color="#4470E1" />}
                     onClick={handleClick}
                 >
                     <div
@@ -185,7 +187,7 @@ export default function List({ selectedCategory, productData, type }) {
                             marginLeft: "20px",
                         }}
                     >
-                        대여기간:{" "}
+                        기간:{" "}
                         {dateRange[0].startDate
                             ? dateRange[0].startDate.toLocaleDateString()
                             : ""}{" "}
@@ -195,6 +197,9 @@ export default function List({ selectedCategory, productData, type }) {
                             : ""}
                     </div>
                 </Button>
+                <IconButton onClick={handleCancelSelection} size="small">
+                    <CloseIcon sx={{ color: "#7E7E7E" }} />
+                </IconButton>
                 <Popover
                     id="simple-popover"
                     open={Boolean(anchorEl)}
@@ -216,10 +221,9 @@ export default function List({ selectedCategory, productData, type }) {
                 </Popover>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <InputBase
-                    sx={{ fontSize: "13px" }}
+                    sx={{ ml: 1, flex: 1, fontSize: "13px" }}
                     placeholder="물품을 검색해보세요."
                     inputProps={{ "aria-label": "search google maps" }}
-                    size="small"
                 />
                 <IconButton
                     type="button"
@@ -229,9 +233,6 @@ export default function List({ selectedCategory, productData, type }) {
                 >
                     <SearchNormal1 />
                 </IconButton>
-                <Button onClick={handleCancelSelection}>
-                    <CloseIcon />
-                </Button>
             </Paper>
 
             <Grid container spacing={5} sx={{ padding: "50px" }}>
