@@ -9,12 +9,17 @@ import { FaStar } from "react-icons/fa";
 import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
 import ProductModal from "./Modal";
+import { getAuth } from "firebase/auth";
 
 export default function Product(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [bookMarkIcon, setBookmarkIcon] = React.useState(false);
+
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+    const isUserLoggedIn = !!currentUser;
 
     return (
         <Card
@@ -86,18 +91,12 @@ export default function Product(props) {
                 </CardContent>
             </CardActionArea>
             <div style={{ position: "absolute", top: "3%", right: "3%" }}>
-                {bookMarkIcon === true ? (
+                {isUserLoggedIn && (
                     <BsFillBookmarkFill
                         size="40"
-                        color="#FFDB5A"
-                        onClick={() => setBookmarkIcon(!bookMarkIcon)}
-                    />
-                ) : (
-                    <BsFillBookmarkFill
-                        size="40"
-                        color="#D9D9D9"
+                        color={bookMarkIcon ? "#FFDB5A" : "#D9D9D9"}
                         style={{
-                            opacity: 0.8,
+                            opacity: bookMarkIcon ? 1 : 0.8,
                         }}
                         onClick={() => setBookmarkIcon(!bookMarkIcon)}
                     />
