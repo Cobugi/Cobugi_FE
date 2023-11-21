@@ -27,8 +27,8 @@ export default function List({ selectedCategory, productData, type }) {
     const [searchText, setSearchText] = useState("");
     const [dateRange, setDateRange] = useState([
         {
-            startDate: new Date(),
-            endDate: new Date(),
+            startDate: null,
+            endDate: null,
             key: "selection",
         },
     ]);
@@ -40,7 +40,9 @@ export default function List({ selectedCategory, productData, type }) {
 
         // 1. 물품 검색어에 대한 필터링
         if (searchText) {
-            result = result.filter((product) => product.productTitle.includes(searchText));
+            result = result.filter((product) =>
+                product.productTitle.includes(searchText)
+            );
         }
 
         // 2. 날짜 범위가 선택되었을 경우에만 적용
@@ -53,8 +55,10 @@ export default function List({ selectedCategory, productData, type }) {
                 const productEndDate = new Date(product.lastDate);
 
                 return (
-                    (productStartDate >= startDate && productStartDate <= endDate) ||
-                    (productEndDate >= startDate && productEndDate <= endDate) ||
+                    (productStartDate >= startDate &&
+                        productStartDate <= endDate) ||
+                    (productEndDate >= startDate &&
+                        productEndDate <= endDate) ||
                     (productStartDate <= startDate && productEndDate >= endDate)
                 );
             });
@@ -64,7 +68,10 @@ export default function List({ selectedCategory, productData, type }) {
         if (selectedCategory !== null && CATEGORY[selectedCategory]) {
             const categoryId = CATEGORY[selectedCategory].id;
             if (categoryId !== 0) {
-                result = result.filter((product) => product.productCartegory === categoryId.toString());
+                result = result.filter(
+                    (product) =>
+                        product.productCartegory === categoryId.toString()
+                );
             }
         }
 
@@ -115,7 +122,10 @@ export default function List({ selectedCategory, productData, type }) {
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentDisplayedProducts = filteredProducts.slice(startIndex, endIndex);
+    const currentDisplayedProducts = filteredProducts.slice(
+        startIndex,
+        endIndex
+    );
     const totalPageCount = Math.ceil(filteredProducts.length / itemsPerPage);
 
     const handlePageChange = (event, value) => {
@@ -156,7 +166,7 @@ export default function List({ selectedCategory, productData, type }) {
                     display: "flex",
                     alignItems: "center",
                     p: "2px 4px",
-                    width: "27%",
+                    // width: "27%",
                     borderRadius: "33px",
                     marginTop: "30px",
                     marginLeft: "50px",
@@ -179,7 +189,10 @@ export default function List({ selectedCategory, productData, type }) {
                         {dateRange[0].startDate
                             ? dateRange[0].startDate.toLocaleDateString()
                             : ""}{" "}
-                        - {dateRange[0].endDate ? dateRange[0].endDate.toLocaleDateString() : ""}
+                        -{" "}
+                        {dateRange[0].endDate
+                            ? dateRange[0].endDate.toLocaleDateString()
+                            : ""}
                     </div>
                 </Button>
                 <Popover
@@ -200,16 +213,13 @@ export default function List({ selectedCategory, productData, type }) {
                         locale={locales["ko"]}
                         ranges={dateRange}
                     />
-                    <Button onClick={handleCancelSelection}>
-                        <CloseIcon />
-                    </Button>
                 </Popover>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <InputBase
-                    sx={{ ml: 1, flex: 1, fontSize: "13px" }}
+                    sx={{ fontSize: "13px" }}
                     placeholder="물품을 검색해보세요."
                     inputProps={{ "aria-label": "search google maps" }}
-                    onChange={(e) => handleSearch(e.target.value)}
+                    size="small"
                 />
                 <IconButton
                     type="button"
@@ -219,6 +229,9 @@ export default function List({ selectedCategory, productData, type }) {
                 >
                     <SearchNormal1 />
                 </IconButton>
+                <Button onClick={handleCancelSelection}>
+                    <CloseIcon />
+                </Button>
             </Paper>
 
             <Grid container spacing={5} sx={{ padding: "50px" }}>

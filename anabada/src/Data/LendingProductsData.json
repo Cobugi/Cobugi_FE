@@ -246,5 +246,361 @@
         "startDate": "2023-12-22",
         "lastDate": "2023-12-29",
         "reservedUsersInfo": []
+    },
+    {
+        "ProductId": "14",
+
+        "registeredUserId": "user7@gmail.com",
+        "registeredUserName": "user7",
+
+        "productTitle": "배드민턴 치실분?",
+        "productImage": "/LendingProductImage/Racket.jpg",
+        "productName": "배드민턴",
+        "productDescription": "1일 1000원입니다. 같이 칠 사람 필요하면 같이 쳐드릴 수 있어요.",
+        "productCartegory": "6",
+        "productPrice": "1000",
+
+        "place": "우촌학사",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-11-30",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user5@gmail.com",
+                "reservedStartDate": "2023-11-25",
+                "reservedEndDate": "2023-11-25"
+            },
+            {
+                "reservedUser": "user6@gmail.com",
+                "reservedStartDate": "2023-11-30",
+                "reservedEndDate": "2023-11-30"
+            }
+        ]
+    },
+    {
+        "ProductId": "15",
+
+        "registeredUserId": "user4@gmail.com",
+        "registeredUserName": "user4",
+
+        "productTitle": "여행용 가방 빌려드립니다",
+        "productImage": "/LendingProductImage/bag.png",
+        "productName": "여행용 가방",
+        "productDescription": "수납공간 많은 가방입니다. 일주일치 짐도 다 들어갑니다. 1일 5000원입니다.",
+        "productCartegory": "7",
+        "productPrice": "5000",
+
+        "place": "미래관",
+
+        "state": "0",
+
+        "startDate": "2023-11-28",
+        "lastDate": "2023-12-24",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user1@gmail.com",
+                "reservedStartDate": "2023-11-28",
+                "reservedEndDate": "2023-12-01"
+            }
+        ]
+    },
+    {
+        "ProductId": "16",
+
+        "registeredUserId": "user6@gmail.com",
+        "registeredUserName": "user6",
+
+        "productTitle": "쿠키몬스터 인형탈",
+        "productImage": "/LendingProductImage/doll.jpg",
+        "productName": "인형탈",
+        "productDescription": "친구한테 선물 받았는데 자리만 차지하고 쓸데가 없어서 골칫덩어립니다.. 빌려가셔서 안돌려주셔도 됩니다.",
+        "productCartegory": "9",
+        "productPrice": "500",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023-11-27",
+        "lastDate": "2023-12-31",
+
+        "reservedUsersInfo": []
+    },
+    {
+        "ProductId": "17",
+
+        "registeredUserId": "user8@gmail.com",
+        "registeredUserName": "user8",
+
+        "productTitle": "캐리어 빌려드립니다",
+        "productImage": "/LendingProductImage/carrier.jpg",
+        "productName": "캐리어",
+        "productDescription": "기내용 캐리어입니다. 가볍고 많이 들어가요.",
+        "productCartegory": "7",
+        "productPrice": "10000",
+
+        "place": "상상관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-30",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user4@gmail.com",
+                "reservedStartDate": "2023-12-05",
+                "reservedEndDate": "2023-12-10"
+            }
+        ]
+    },
+    {
+        "ProductId": "18",
+
+        "registeredUserId": "user10@gmail.com",
+        "registeredUserName": "user10",
+
+        "productTitle": "초보자용 통기타입니다.",
+        "productImage": "/LendingProductImage/guitar.jfif",
+        "productName": "통기타",
+        "productDescription": "초보자도 쉽게 칠 수 있는 통기타입니다. 원하시면 통기타 악보도 빌려드릴게요.",
+        "productCartegory": "8",
+        "productPrice": "6000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-20",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user1@gmail.com",
+                "reservedStartDate": "2023-12-25",
+                "reservedEndDate": "2023-12-27"
+            }
+        ]
+    },
+    {
+        "ProductId": "19",
+
+        "registeredUserId": "user1@gmail.com",
+        "registeredUserName": "user1",
+
+        "productTitle": "파마머리 가발 빌려드립니다.",
+        "productImage": "/LendingProductImage/hair.jpg",
+        "productName": "가발",
+        "productDescription": "축제때 쓸려고 샀는데 꽤 귀여워요. 인싸가 되고 싶은 분들께 추천. 네고 가능.",
+        "productCartegory": "9",
+        "productPrice": "2000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-02",
+
+        "reservedUsersInfo": []
+    },
+    {
+        "ProductId": "20",
+
+        "registeredUserId": "user3@gmail.com",
+        "registeredUserName": "user3",
+
+        "productTitle": "훌라후프",
+        "productImage": "/LendingProductImage/hoof.jpg",
+        "productName": "훌라후프",
+        "productDescription": "3년전에 산거라 약간 사용감 있어요. 사용하는데에는 문제 없을 거에요!",
+        "productCartegory": "6",
+        "productPrice": "1000",
+
+        "place": "진리관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-16",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user2@gmail.com",
+                "reservedStartDate": "2023-12-03",
+                "reservedEndDate": "2023-12-23"
+            }
+        ]
+    },
+    {
+        "ProductId": "21",
+
+        "registeredUserId": "user5@gmail.com",
+        "registeredUserName": "user5",
+
+        "productTitle": "여행 갈 예정이신 분 주목!!!",
+        "productImage": "/LendingProductImage/pillow.jfif",
+        "productName": "목베개",
+        "productDescription": "장기간 비행할 때 목베개 필수이신 거 아시죠. 하루에 단돈 500원",
+        "productCartegory": "7",
+        "productPrice": "500원",
+
+        "place": "공학관 A",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-25",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user7@gmail.com",
+                "reservedStartDate": "2023-11-25",
+                "reservedEndDate": "2023-11-28"
+            }
+        ]
+    },
+    {
+        "ProductId": "22",
+
+        "registeredUserId": "user2@gmail.com",
+        "registeredUserName": "user2",
+
+        "productTitle": "르세라핌 앨범 빌려드립니다",
+        "productImage": "/LendingProductImage/album.jpg",
+        "productName": "앨범",
+        "productDescription": "소중히 아껴주실 분만 연락주세요. 르세라핌 팬 인증 받습니다. ",
+        "productCartegory": "5",
+        "productPrice": "1000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-15",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user1@gmail.com",
+                "reservedStartDate": "2023-11-25",
+                "reservedEndDate": "2023-11-27"
+            }
+        ]
+    },
+    {
+        "ProductId": "23",
+
+        "registeredUserId": "user9@gmail.com",
+        "registeredUserName": "user9",
+
+        "productTitle": "뜨개질 좋아하시는 분 계신가요.",
+        "productImage": "/LendingProductImage/quilt.png",
+        "productName": "뜨개질",
+        "productDescription": "실을 너무 많이 사서 필요하신분 있으면 드릴게요. 막대기는 대여만 가능합니다.",
+        "productCartegory": "8",
+        "productPrice": "10000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023.11.07",
+        "lastDate": "2023.12.27",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user10@gmail.com",
+                "reservedStartDate": "2023-11-25",
+                "reservedEndDate": "2023-11-29"
+            }
+        ]
+    },
+    {
+        "ProductId": "24",
+
+        "registeredUserId": "user3@gmial.com",
+        "registeredUserName": "user3",
+
+        "productTitle": "망원경",
+        "productImage": "/LendingProductImage/scope.jpg",
+        "productName": "망원경",
+        "productDescription": "망원경 빌려드립니다. 쉽게 망가지니까 조심히 다뤄주세요. 사용법은 간단하게 설명드릴 수 있어요.",
+        "productCartegory": "8",
+        "productPrice": "50000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023.11.07",
+        "lastDate": "2023.12.16",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user2@gmail.com",
+                "reservedStartDate": "2023-11-25",
+                "reservedEndDate": "2023-11-25"
+            }
+        ]
+    },
+    {
+        "ProductId": "25",
+
+        "registeredUserId": "user4@gmail.com",
+        "registeredUserName": "user4",
+
+        "productTitle": "이름은 모르는데 운동기구 빌려드립니다.",
+        "productImage": "/LendingProductImage/twist.jfif",
+        "productName": "운동기구",
+        "productDescription": "이걸 뭐라고 하죠..? 트위스트라고 하나요? 여튼 하루에 2000원입니다. 네고 가능.",
+        "productCartegory": "6",
+        "productPrice": "2000",
+
+        "place": "우촌관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-11-30",
+
+        "reservedUsersInfo": [
+            {
+                "reservedUser": "user10@gmail.com",
+                "reservedStartDate": "2023-11-14",
+                "reservedEndDate": "2023-11-18"
+            },
+            {
+                "reservedUser": "user2@gmail.com",
+                "reservedStartDate": "2023-11-20",
+                "reservedEndDate": "2023-11-25"
+            }
+        ]
+    },
+    {
+        "ProductId": "26",
+
+        "registeredUserId": "user5@gmail.com",
+        "registeredUserName": "user5",
+
+        "productTitle": "티셔츠 빌려드립니다",
+        "productImage": "/LendingProductImage/t-shirt.jpg",
+        "productName": "티셔츠",
+        "productDescription": "비싼거라 뭐 안 묻게 조심해주셔야 됩니다... 편하게 연락 주세요!",
+        "productCartegory": "9",
+        "productPrice": "5000",
+
+        "place": "미래관",
+
+        "state": "0",
+
+        "startDate": "2023-11-10",
+        "lastDate": "2023-12-30",
+
+        "reservedUsersInfo": []
     }
 ]
