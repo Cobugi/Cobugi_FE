@@ -39,28 +39,19 @@ const Message = ({
                                 height={45}
                             />
                         </div>
-                    
-                    
                     </>
-                    
                 )}
                 {/* 채팅 내용. 사용자 별로 색깔 구분 */}
-              
-                <div
-                    className={`w-10 ${
-                        uid === currentUser ? "" : "mr-2"
-                    }`}
-                >
+                <div className={`w-10 ${uid === currentUser ? "" : "mr-2"}`}>
                     <Typography
                         sx={{ fontSize: "13px", marginBottom: "20px" }}
                         color="#333333"
                     >
-                    {uid.split('@')[0]}  
-                    </Typography>          
+                        {uid.split("@")[0]}
+                    </Typography>
                 </div>
-
+                <br />
                 <div
-                
                     className={`p-2 rounded-lg  ${
                         uid === currentUser
                             ? "bg-[#4470E1] text-white "
@@ -69,7 +60,6 @@ const Message = ({
                 >
                     {text}
                 </div>
-                
             </div>
         </>
     );

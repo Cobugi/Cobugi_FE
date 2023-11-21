@@ -73,9 +73,12 @@ const Channel = ({ id = null }) => {
 
     return (
         <>
-            <div className="flex flex-col h-full">
+            <div
+                className="flex flex-col h-full"
+                style={{ maxHeight: "80vh", overflowY: "auto" }}
+            >
                 <div className="overflow-auto h-full">
-                    <div className="py-4 max-w-screen-lg mx-auto">
+                    <div className="py-4 max-w-full lg mx-auto">
                         <ul>
                             {messages
                                 ?.sort((first, second) =>
@@ -97,7 +100,7 @@ const Channel = ({ id = null }) => {
             </div>
 
             {/* 채팅 입력 폼 생성 */}
-            <div className="absolute" style={{ bottom: 0, width: "80%" }}>
+            <div className="fixed" style={{ bottom: 0, right: 0, left: 200 }}>
                 <div className="w-full z-20 pb-safe p-4 bg-gray-50">
                     <form onSubmit={handleOnSubmit} className="flex">
                         <input
