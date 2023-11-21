@@ -1,22 +1,22 @@
 [
-        {
-            "id": "user1@1",
-            "password": "user1",
-            "name": "user1",
-            "bookMarkData" : []
-        },
-        {
-            "id": "user2@2",
-            "password": "user2",
-            "name": "user2",
-            "bookMarkData" : [
-                {"ProductId" : "1"}
-            ]       
-        },
-        {
-            "id": "user3@3",
-            "password": "user3",
-            "name": "user3",
-            "bookMarkData" : []
-        } 
+    {
+        "id": "user1@gmail.com",
+        "bookMarkData": [
+            { "ProductId": "1" },
+            { "ProductId": "2" },
+            { "ProductId": "3" }
+        ]
+    },
+    {
+        "id": "user2@2",
+        "password": "user2",
+        "name": "user2",
+        "bookMarkData": [{ "ProductId": "1" }]
+    },
+    {
+        "id": "user3@3",
+        "password": "user3",
+        "name": "user3",
+        "bookMarkData": []
+    }
 ]

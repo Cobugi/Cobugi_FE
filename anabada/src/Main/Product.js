@@ -10,6 +10,8 @@ import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
 import ProductModal from "./Modal";
 import { getAuth } from "firebase/auth";
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+// import { UsersState } from "../ProductState/UsersState";
 
 export default function Product(props) {
     const [open, setOpen] = React.useState(false);
@@ -18,8 +20,12 @@ export default function Product(props) {
     const [bookMarkIcon, setBookmarkIcon] = React.useState(false);
 
     const auth = getAuth();
-    const currentUser = auth.currentUser;
-    const isUserLoggedIn = !!currentUser;
+    const currentUser = localStorage.getItem("currentUser");
+    const isUserLoggedIn = currentUser !== null;
+    // const [user, setBookmarks] = useRecoilState(UsersState);
+    // const setBookmarks = useSetRecoilState(UsersState);
+
+    console.log(currentUser !== null);
 
     return (
         <Card
@@ -94,11 +100,13 @@ export default function Product(props) {
                 {isUserLoggedIn && (
                     <BsFillBookmarkFill
                         size="40"
-                        color={bookMarkIcon ? "#FFDB5A" : "#D9D9D9"}
+                        color={props.isBookmarked ? "#FFDB5A" : "#D9D9D9"}
                         style={{
                             opacity: bookMarkIcon ? 1 : 0.8,
                         }}
-                        onClick={() => setBookmarkIcon(!bookMarkIcon)}
+                        onClick={() => {
+                            props.update(props.ProductId);
+                        }}
                     />
                 )}
             </div>
