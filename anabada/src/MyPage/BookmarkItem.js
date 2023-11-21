@@ -12,10 +12,13 @@ import {
 } from "@mui/material";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import CircleIcon from "@mui/icons-material/Circle";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { lendingProductsState } from "../ProductState/LendigProductsState";
 
-const BookmarkItem = ({ ProductId }) => {
-  const [products] = LendingProductsData.filter(
-    ({ lendingProductId }) => lendingProductId === ProductId
+const BookmarkItem = ({ productId }) => {
+  const products = useRecoilValue(lendingProductsState);
+  const [filteredProducts] = products.filter(
+    ({ ProductId }) => productId === productId
   );
 
   return (
@@ -30,24 +33,24 @@ const BookmarkItem = ({ ProductId }) => {
         </ListItemAvatar> */}
         <img
           alt="물건사진"
-          src={products.productImage}
+          src={filteredProducts.productImage}
           width={100}
           height={100}
         />
         <LocationCityIcon />
         <ListItemText
-          primary={products.place}
+          primary={filteredProducts.place}
           secondary={
             <>
               <Typography sx={{ display: "inline" }}>
-                {products.productTitle}
+                {filteredProducts.productTitle}
               </Typography>
               <Typography sx={{ color: "blue" }}>
-                {products.productPrice}원/일
+                {filteredProducts.productPrice}원/일
               </Typography>
               <Typography>
                 <CircleIcon sx={{ color: "#d3d3d3" }} />
-                {products.registeredUserName}
+                {filteredProducts.registeredUserName}
               </Typography>
             </>
           }

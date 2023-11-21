@@ -16,24 +16,30 @@ import { Box, Paper } from "@mui/material";
  */
 
 const Bookmark = ({ userId }) => {
-  if (userId == null) {
-    // test code
-    userId = "user2@2";
-  }
   const [{ bookMarkData }] = UserData.filter((user) => user.id === userId);
-
+  console.log(bookMarkData);
   return (
     <>
-        <>
-            <Paper sx={{height:"500px", width:"300px", backgroundColor:"white", borderRadius:5, border:0, padding:"10px", elevation: 3}}>
-                  <Typography variant="h4" align="center" margin={2}>북마크</Typography>
-                  <List sx={{ bgColor: "blue" }}>
-                    {bookMarkData.map(({ lendingProductId }, idx) => (
-                      <BookmarkItem ProductId={lendingProductId} key={`${userId}-${idx}`} />
-                    ))}
-                  </List>
-            </Paper>
-        </>
+      <Paper
+        sx={{
+          height: "500px",
+          width: "300px",
+          backgroundColor: "white",
+          borderRadius: 5,
+          border: 0,
+          padding: "10px",
+          elevation: 3,
+        }}
+      >
+        <Typography variant="h4" align="center" margin={2}>
+          북마크
+        </Typography>
+        <List sx={{ bgColor: "blue" }}>
+          {bookMarkData.map(({ ProductId }, idx) => (
+            <BookmarkItem productId={ProductId} key={`${userId}-${idx}`} />
+          ))}
+        </List>
+      </Paper>
     </>
   );
 };
