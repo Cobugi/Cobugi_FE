@@ -10,7 +10,7 @@
             "password": "user2",
             "name": "user2",
             "bookMarkData" : [
-                {"lendingProductId" : "1"}
+                {"ProductId" : "1"}
             ]       
         },
         {

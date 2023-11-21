@@ -20,6 +20,8 @@ export default function List({ selectedCategory, productData, type }) {
     const userId = localStorage.getItem("userId");
     const itemsPerPage = 20;
 
+    
+
     const bookmarks =
         userData.find((el) => el.id === userId)?.bookMarkData || [];
     const [filteredProducts, setFilteredProducts] = useState([]);

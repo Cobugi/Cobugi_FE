@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import CategoryBtn from "./CategoryButton";
 import List from "../Main/List";
-import productData from "../Data/LendingProductsData.json";
+import { useRecoilValue } from "recoil";
+import { lendingProductsState } from "../ProductState/LendigProductsState";
 
 export default function CategoryList() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [searchText, setSearchText] = useState(""); // 추가
+    const productData = useRecoilValue(lendingProductsState);
 
+    console.log(productData);
     const handleSearch = (text) => {
         setSearchText(text);
     };
