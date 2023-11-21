@@ -16,10 +16,6 @@ import { Box, Paper } from "@mui/material";
  */
 
 const Bookmark = ({ userId }) => {
-  // if (userId == null) {
-  //   // test code
-  //   userId = "user2";
-  // }
   const [{ bookMarkData }] = UserData.filter((user) => user.id === userId);
   console.log(bookMarkData);
   return (
@@ -41,7 +37,7 @@ const Bookmark = ({ userId }) => {
         <List sx={{ bgColor: "blue" }}>
           {bookMarkData.map(({ lendingProductId }, idx) => (
             <BookmarkItem
-              ProductId={lendingProductId}
+              productId={lendingProductId}
               key={`${userId}-${idx}`}
             />
           ))}
