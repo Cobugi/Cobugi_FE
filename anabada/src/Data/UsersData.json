@@ -1,12 +1,12 @@
 [
         {
-            "id": "user1@1",
+            "id": "user1",
             "password": "user1",
             "name": "user1",
             "bookMarkData" : []
         },
         {
-            "id": "user2@2",
+            "id": "user2",
             "password": "user2",
             "name": "user2",
             "bookMarkData" : [
@@ -14,7 +14,7 @@
             ]       
         },
         {
-            "id": "user3@3",
+            "id": "user3",
             "password": "user3",
             "name": "user3",
             "bookMarkData" : []
