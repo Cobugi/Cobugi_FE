@@ -16,7 +16,7 @@ const LendProductCard = ({ productId }) => {
   const [product] = lend.filter(({ ProductId }) => ProductId == productId);
 
   return (
-    <Card sx={{ maxWidth: 141, maxHeight: 145 }}>
+    <Card sx={{ maxWidth: 141, maxHeight: 145, display: "inline-block" }}>
       <CardMedia
         sx={{ height: 55 }}
         image={product.productImage}
@@ -28,7 +28,9 @@ const LendProductCard = ({ productId }) => {
           {product.place}
         </Typography>
         <Typography gutterBottom variant="caption" component="div">
-          {product.productTitle}
+          {product.productTitle.length <= 10
+            ? product.productTitle
+            : product.productTitle.substring(0, 9) + "..."}
         </Typography>
         <Typography variant="caption">
           <CircleIcon fontSize="small" sx={{ color: "#d3d3d3" }} />

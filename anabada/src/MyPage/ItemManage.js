@@ -9,6 +9,7 @@ import { lendingProductsState } from "../ProductState/LendigProductsState";
 import { seekingProductsState } from "../ProductState/SeekingProductsState";
 import { usersState } from "../ProductState/UsersState";
 import LendProductCard from "./LendProductCard";
+import MyProductCard from "./MyProductCard";
 
 //등록물건, 빌려준물건, 빌린물건 이렇게 3가지로 구분해야한다.
 
@@ -57,18 +58,16 @@ const ItemManage = ({ userId }) => {
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
                 {lend
-                  .filter(({ reservedUsersInfo }) => {
-                    console.log(`${userId} : ${reservedUsersInfo}`);
-                    return reservedUsersInfo.reduce(
+                  .filter(({ reservedUsersInfo }) =>
+                    reservedUsersInfo.reduce(
                       (isContain, { reservedUser }) =>
                         (isContain |= reservedUser === userId),
                       false
-                    );
-                  })
-                  .map(({ ProductId }) => {
-                    console.log(`PID : ${ProductId}`);
-                    return <LendProductCard productId={ProductId} />;
-                  })}
+                    )
+                  )
+                  .map(({ ProductId }) => (
+                    <LendProductCard productId={ProductId} />
+                  ))}
               </Box>
             </Box>
 
@@ -77,7 +76,7 @@ const ItemManage = ({ userId }) => {
                 빌려준 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-
+                <MyProductCard />
               </Box>
             </Box>
           </>
