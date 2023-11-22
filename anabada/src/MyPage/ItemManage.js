@@ -1,51 +1,84 @@
 /* eslint-disable*/
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Box, Paper, Typography, Button ,ButtonGroup } from "@mui/material";
+import { Box, Paper, Typography, Button, ButtonGroup } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { useRecoilValue } from "recoil";
+import { lendingProductsState } from "../ProductState/LendigProductsState";
+import { seekingProductsState } from "../ProductState/SeekingProductsState";
+import { usersState } from "../ProductState/UsersState";
+import LendProductCard from "./LendProductCard";
 
+const ItemManage = ({ userId }) => {
+  const [showCalendar, setShowCalendar] = useState(false);
+  const lend = useRecoilValue(lendingProductsState);
 
+  return (
+    <>
+      <Paper
+        sx={{
+          height: "500px",
+          width: "600px",
+          backgroundColor: "white",
+          borderRadius: 5,
+          border: 0,
+          padding: "10px",
+          elevation: 3,
+        }}
+      >
+        <Box sx={{ margin: 1 }}>
+          <ButtonGroup
+            variant="contained"
+            aria-label="outlined primary button group"
+          >
+            <Button onClick={() => setShowCalendar(false)}>물품관리</Button>
+            <Button onClick={() => setShowCalendar(true)}>캘린더</Button>
+          </ButtonGroup>
+        </Box>
 
-const ItemManage = () => {
-    const [showCalendar, setShowCalendar] = useState(false);
+        {!showCalendar && (
+          // 물품 관리 UI
+          <>
+            <Box sx={{ border: 1, margin: 1, width: "97%", height: "40%" }}>
+              <Typography marginLeft={1} marginTop={1}>
+                빌린 물건
+              </Typography>
+              <Box sx={{ border: 1, margin: 1, height: "70%" }}>
+                {lend
+                  .filter(({ reservedUsersInfo }) => {
+                    console.log(`${userId} : ${reservedUsersInfo}`);
+                    return reservedUsersInfo.reduce(
+                      (isContain, { reservedUser }) =>
+                        (isContain |= reservedUser === userId),
+                      false
+                    );
+                  })
+                  .map(({ ProductId }) => {
+                    console.log(`PID : ${ProductId}`);
+                    return <LendProductCard productId={ProductId} />;
+                  })}
+              </Box>
+            </Box>
 
-    return(
-        <>
-            <Paper sx={{height:"500px", width:"600px", backgroundColor:"white", borderRadius:5, border:0, padding:"10px", elevation: 3}}>
-                    <Box sx={{margin:1}}>
-                        <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                            <Button onClick={() => setShowCalendar(false)}>물품관리</Button>
-                            <Button onClick={() => setShowCalendar(true)}>캘린더</Button>
-                        </ButtonGroup>
-                    </Box>
+            <Box sx={{ border: 1, margin: 1, width: "97%", height: "40%" }}>
+              <Typography marginLeft={1} marginTop={1}>
+                등록 물건
+              </Typography>
+              <Box sx={{ border: 1, margin: 1, height: "70%" }}>
+                {/* 내가 등록한 물건 리스트 */}
+              </Box>
+            </Box>
+          </>
+        )}
 
-                    {!showCalendar && (
-                    // 물품 관리 UI
-                    <>
-                        <Box sx={{ border: 1,    margin: 1, width: '97%', height: '40%' }}>
-                            <Typography marginLeft={1} marginTop={1}>빌린 물건</Typography>
-                            <Box sx={{ border: 1, margin: 1, height: '70%' }}>
-                                {/* 내가 빌린 물건 리스트 */}
-                            </Box>
-                        </Box>
+        {showCalendar && (
+          // 캘린더 UI
+          <Box>캘린더</Box>
+        )}
+      </Paper>
+    </>
+  );
+};
 
-                        <Box sx={{ border: 1, margin: 1, width: '97%', height: '40%' }}>
-                            <Typography marginLeft={1} marginTop={1}>등록 물건</Typography>
-                            <Box sx={{ border: 1, margin: 1, height: '70%' }}>
-                            {/* 내가 등록한 물건 리스트 */}
-                            </Box>
-                        </Box>
-                    </>
-                    )}
-
-                    {showCalendar && (
-                    // 캘린더 UI
-                        <Box>캘린더</Box>
-                    )}
-            </Paper>
-        </>
-    )
-}
-
-export default ItemManage
+export default ItemManage;
