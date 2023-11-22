@@ -77,7 +77,7 @@ const ItemManage = ({ userId }) => {
                 빌려준 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-
+                <MyProductCard />
               </Box>
             </Box>
           </>
