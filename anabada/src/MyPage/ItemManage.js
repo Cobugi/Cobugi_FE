@@ -10,6 +10,8 @@ import { seekingProductsState } from "../ProductState/SeekingProductsState";
 import { usersState } from "../ProductState/UsersState";
 import LendProductCard from "./LendProductCard";
 
+//등록물건, 빌려준물건, 빌린물건 이렇게 3가지로 구분해야한다.
+
 const ItemManage = ({ userId }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const lend = useRecoilValue(lendingProductsState);
@@ -18,7 +20,7 @@ const ItemManage = ({ userId }) => {
     <>
       <Paper
         sx={{
-          height: "500px",
+          height: "600px",
           width: "600px",
           backgroundColor: "white",
           borderRadius: 5,
@@ -40,7 +42,16 @@ const ItemManage = ({ userId }) => {
         {!showCalendar && (
           // 물품 관리 UI
           <>
-            <Box sx={{ border: 1, margin: 1, width: "97%", height: "40%" }}>
+            <Box sx={{ border: 1, margin: 1, width: "97%", height: "30%" }}>
+              <Typography marginLeft={1} marginTop={1}>
+                등록 물건
+              </Typography>
+              <Box sx={{ border: 1, margin: 1, height: "70%" }}>
+                {/* 내가 등록한 물건 리스트 */}
+              </Box>
+            </Box>
+
+            <Box sx={{ border: 1, margin: 1, width: "97%", height: "30%" }}>
               <Typography marginLeft={1} marginTop={1}>
                 빌린 물건
               </Typography>
@@ -61,12 +72,12 @@ const ItemManage = ({ userId }) => {
               </Box>
             </Box>
 
-            <Box sx={{ border: 1, margin: 1, width: "97%", height: "40%" }}>
+            <Box sx={{ border: 1, margin: 1, width: "97%", height: "30%" }}>
               <Typography marginLeft={1} marginTop={1}>
-                등록 물건
+                빌려준 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-                {/* 내가 등록한 물건 리스트 */}
+
               </Box>
             </Box>
           </>
