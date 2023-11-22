@@ -95,7 +95,12 @@ const MyPageIndex = () => {
             />
           </Grid>
           <Grid item>
-            <ItemManage userId={userId} />
+            <ItemManage
+              curName={curName}
+              myRegister={myRegister}
+              mySeek={mySeek}
+              myLend={myLend}
+            />
           </Grid>
           <Grid item>
             <Bookmark userId={userId} />
