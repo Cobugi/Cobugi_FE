@@ -61,6 +61,8 @@ export default function PrimarySearchAppBar() {
 
         if (currentUser) {
             // 사용자가 로그인되어 있으면 대화하기 기능 수행
+            navigate("/registerform"); // "registerform"으로 이동하도록 수정
+            
         } else {
             // 사용자가 로그인되어 있지 않으면 다이얼로그 표시 및 로그인 창으로 이동
             alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");

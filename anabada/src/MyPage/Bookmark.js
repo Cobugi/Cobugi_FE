@@ -26,7 +26,7 @@ const Bookmark = ({ userId }) => {
     <>
       <Paper
         sx={{
-          height: "500px",
+          height: "600px",
           width: "300px",
           backgroundColor: "white",
           borderRadius: 5,
