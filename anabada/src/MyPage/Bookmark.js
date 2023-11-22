@@ -17,38 +17,35 @@ import { usersState } from "../ProductState/UsersState";
  */
 
 const Bookmark = ({ userId }) => {
-    const UserData = useRecoilValue(usersState);
-    console.log(UserData);
-    console.log(userId);
-    const [{ bookMarkData }] = UserData.filter((user) => user.id === userId);
-    console.log(bookMarkData);
-    return (
-        <>
-            <Paper
-                sx={{
-                    height: "500px",
-                    width: "300px",
-                    backgroundColor: "white",
-                    borderRadius: 5,
-                    border: 0,
-                    padding: "10px",
-                    elevation: 3,
-                }}
-            >
-                <Typography variant="h4" align="center" margin={2}>
-                    북마크
-                </Typography>
-                <List sx={{ bgColor: "blue" }}>
-                    {bookMarkData.map(({ ProductId }, idx) => (
-                        <BookmarkItem
-                            productId={ProductId}
-                            key={`${userId}-${idx}`}
-                        />
-                    ))}
-                </List>
-            </Paper>
-        </>
-    );
+  const UserData = useRecoilValue(usersState);
+  console.log(UserData);
+  console.log(userId);
+  const [{ bookMarkData }] = UserData.filter((user) => user.id === userId);
+  console.log(bookMarkData);
+  return (
+    <>
+      <Paper
+        sx={{
+          height: "500px",
+          width: "300px",
+          backgroundColor: "white",
+          borderRadius: 5,
+          border: 0,
+          padding: "10px",
+          elevation: 3,
+        }}
+      >
+        <Typography variant="h4" align="center" margin={2}>
+          북마크
+        </Typography>
+        <List sx={{ bgColor: "blue" }}>
+          {bookMarkData.map(({ ProductId }, idx) => (
+            <BookmarkItem productId={ProductId} key={`${userId}-${idx}`} />
+          ))}
+        </List>
+      </Paper>
+    </>
+  );
 };
 
 export default Bookmark;
