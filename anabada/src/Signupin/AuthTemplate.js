@@ -54,10 +54,10 @@ const AuthTemplate = ({ children }) => {
                             component="div"
                             sx={{
                                 display: { xs: "none", sm: "block" },
-
                             }}
                         >
                             <img
+                                alt="로고"
                                 src="/anabada_logo.jpg"
                                 width="90px"
                                 height="50px"

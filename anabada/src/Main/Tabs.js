@@ -12,13 +12,7 @@ const MainTab = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue); // handleChange 함수를 정의
     };
-    const navigate = useNavigate();
 
-    const handleSearch = (text) => {
-        // 검색어 처리 로직 추가
-        console.log('Search text:', text);
-    };
-    
     function CustomTabPanel(props) {
         const { children, value, index, ...other } = props;
 
@@ -38,12 +32,6 @@ const MainTab = () => {
             </div>
         );
     }
-    function a11yProps(index) {
-        return {
-            id: `simple-tab-${index}`,
-            "aria-controls": `simple-tabpanel-${index}`,
-        };
-    }
 
     return (
         <div>
@@ -55,22 +43,13 @@ const MainTab = () => {
             >
                 <Tab sx={{ fontSize: "18px" }} label="빌리기" />
                 <Tab sx={{ fontSize: "18px" }} label="빌려주기" />
-                <Tab sx={{ fontSize: "18px" }} label="물품 지도" />
             </Tabs>
             <CustomTabPanel value={value} index={0}>
-                <CategoryList onSearch={handleSearch}/>
+                <CategoryList />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 <SeekingList />
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                Item Three
-            </CustomTabPanel>
-            {/* <TabPanel value="1">
-        <CategoryList />
-    </TabPanel>
-    <TabPanel value="2">Item Two</TabPanel>
-    <TabPanel value="3">Item Three</TabPanel> */}
         </div>
     );
 };

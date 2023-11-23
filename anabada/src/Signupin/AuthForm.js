@@ -6,12 +6,10 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import userData from "../Data/UsersData.json";
 import {
-    AuthErrorCodes,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { lastDayOfWeekWithOptions } from "date-fns/fp";
 
 // 회원가입 or 로그인폼 보여줌.
 
@@ -29,7 +27,6 @@ const AuthFormBlock = styled.div`
     }
 `;
 
-// button margin
 const ButtonWithMarinTop = styled.button`
     border: none;
     border-radius: 4px;
@@ -51,7 +48,6 @@ const ButtonWithMarinTop = styled.button`
     font-size: 1.125rem;
 `;
 
-// styled input
 
 const StyledInput = styled.input`
     font-size: 1rem;
@@ -88,7 +84,6 @@ const textMap = {
 };
 
 const AuthForm = ({ type }) => {
-    const [users, setUsers] = useState(userData);
     const [errorMessage, setErrorMessage] = useState(""); //로그인 에러메세지
     const [registerEmail, setRegisterEmail] = useState(""); //회원 가입 이메일
     const [registerPassword, setRegisterPassword] = useState(""); // 비밀번호

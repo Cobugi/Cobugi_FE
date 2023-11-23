@@ -4,13 +4,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { Bookmark, Building4 } from "iconsax-react";
-import { FaStar } from "react-icons/fa";
-import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
+import { Building4 } from "iconsax-react";
+import { BsFillBookmarkFill } from "react-icons/bs";
 import Grid from "@mui/material/Grid";
 import ProductModal from "./Modal";
 import { getAuth } from "firebase/auth";
-import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { usersState } from "../ProductState/UsersState";
 
 export default function Product(props) {
