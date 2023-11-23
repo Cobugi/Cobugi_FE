@@ -3,12 +3,11 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { addDays, isBefore, isAfter, getQuarter } from "date-fns";
+import { addDays, isBefore } from "date-fns";
 import { firebaseConfig } from "../firebase-config";
-
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRange, DateRangePicker } from "react-date-range";
+import { DateRange } from "react-date-range";
 import { useNavigate } from "react-router-dom";
 import * as locales from "react-date-range/dist/locale";
 import Avatar from "@mui/material/Avatar";
@@ -17,7 +16,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth";
 import { format } from "date-fns";
-import Grid from "@mui/material/Grid";
 const style = {
     maxHeight: "80vh",
     overflowY: "auto",
@@ -181,9 +179,6 @@ export default function ProductModal(props) {
                     onClick={props.handleClose}
                     sx={{
                         position: "relative",
-                        // bottom: 0,
-                        // right: 0,
-                        // margin: 3,
                         left: 410,
                     }}
                 />
@@ -206,7 +201,7 @@ export default function ProductModal(props) {
                     color="#707070"
                     sx={{
                         fontSize: "11px",
-                        marginTop:"10px",
+                        marginTop: "10px",
                         marginBottom: "10px",
                         display: "flex",
                         alignItems: "center",
@@ -235,44 +230,6 @@ export default function ProductModal(props) {
                 <Typography sx={{ fontSize: "13px" }} component="div">
                     {props.productDescription}
                 </Typography>
-                {/* <Box
-                    sx={{
-                        fontSize: "11px",
-                        marginTop: "40px",
-                        marginBottom: "10px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    <Box
-                        sx={{
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            marginRight: 1,
-                        }}
-                        component="div"
-                    >
-                        대여장소
-                        <Typography sx={{ fontSize: "12px" }} component="div">
-                            {props.place}
-                        </Typography>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            marginRight: 1,
-                            display: "block",
-                        }}
-                        component="div"
-                    >
-                        대여기간
-                    </Box>
-                    <Box sx={{ fontSize: "12px" }} component="div">
-                        {props.rentalDate} ~ {props.returnDate}
-                    </Box>
-                </Box> */}
                 <Box
                     sx={{
                         fontSize: "11px",
@@ -320,7 +277,6 @@ export default function ProductModal(props) {
                         <Typography sx={{ fontSize: "12px" }}>
                             {props.startDate} ~ {props.lastDate}
                         </Typography>
-                        
                     </Box>
                 </Box>
                 {props.type === "lending" ? (
@@ -349,15 +305,9 @@ export default function ProductModal(props) {
 
                 <Button
                     variant="contained"
-                    // sx={{
-                    //     verticalAlign: "bottom",
-                    // }}
                     sx={{
                         position: "relative",
-                        // right: 0,
-
                         left: 300,
-                        //margin: 3,
                     }}
                     endIcon={<Message size="16" color="white" />}
                     onClick={handleChatButtonClick}

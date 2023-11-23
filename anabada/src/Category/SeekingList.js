@@ -15,7 +15,7 @@ export default function CategoryList() {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center", // 수평 가운데 정렬
+                    alignItems: "center",
                 }}
             >
                 <ButtonGroup

@@ -2,7 +2,6 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import SearchBox from "./search";
 import Button from "@mui/material/Button";
 import { Edit } from "iconsax-react";
 import { useNavigate, Link } from "react-router-dom";
@@ -11,7 +10,6 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
-import { set } from "date-fns";
 
 export default function PrimarySearchAppBar() {
     const navigate = useNavigate();
@@ -19,7 +17,7 @@ export default function PrimarySearchAppBar() {
     const auth = getAuth();
 
     const buttonStyle = {
-        width: "140px", // 가로 크기
+        width: "140px",
         height: "40px",
         borderRadius: "10px",
         backgroundColor: "#ECF1FF",
@@ -28,29 +26,23 @@ export default function PrimarySearchAppBar() {
     };
 
     useEffect(() => {
-        // Listen for changes in the user's login status
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
         });
 
-        // Unsubscribe when the component unmounts
         return () => unsubscribe();
     }, []);
 
     const handleLogout = () => {
         const auth = getAuth();
 
-        // Sign out the user
+        //로그아웃
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
                 console.log("User signed out");
-                // Clear currentUser in local storage
                 localStorage.removeItem("currentUser");
-                // You can redirect or perform additional actions after successful logout.
             })
             .catch((error) => {
-                // An error happened.
                 console.error("Error during logout", error);
             });
     };
@@ -95,7 +87,6 @@ export default function PrimarySearchAppBar() {
                         </Typography>
                     </Link>
                     <Box sx={{ flexGrow: 1 }} />
-                    {/* <SearchBox /> */}
                     <Box sx={{ flexGrow: 1 }} />
                     <div style={{ marginRight: "20px" }}>
                         <Button

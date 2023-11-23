@@ -58,17 +58,8 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-    return {
-        id: `vertical-tab-${index}`,
-        "aria-controls": `vertical-tabpanel-${index}`,
-    };
-}
-
 export default function VerticalTabs() {
-    const location = useLocation();
     const [value, setValue] = React.useState(0);
-    const [collections, setCollections] = React.useState([]);
 
     firebase.initializeApp(firebaseConfig);
     const firestore = firebase.firestore();
@@ -107,11 +98,9 @@ export default function VerticalTabs() {
                         {collectionList.map((collection, index) => (
                             <Tab
                                 key={index}
-                                label={
-                                    collection.id
-                                        .replace(/\D*\d/, "")
-                                        .split("@")[0]
-                                }
+                                label={collection.id
+                                    .split("@")[0]
+                                    .replace(/^[a-zA-Z]+\d*/, "")}
                             />
                         ))}
                     </Tabs>

@@ -1,4 +1,3 @@
-// firebase 8 이하로 다운그레이드 해서 import 하거나, firebase 9 이상은 compatability 옵션 사용
 import React, { useEffect, useState, useRef } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
@@ -6,7 +5,6 @@ import { firebaseConfig } from "../firebase-config";
 import { useFirestoreQuery } from "./hooks";
 import Message from "./message";
 import { ArrowUp } from "iconsax-react";
-import { Typography } from "@mui/material";
 const Channel = ({ id = null }) => {
     // firebase initialize
     firebase.initializeApp(firebaseConfig);
@@ -64,9 +62,7 @@ const Channel = ({ id = null }) => {
                 isRead: false,
             });
 
-            // Clear input field
             setNewMessage("");
-            // Scroll down to the bottom of the list
             bottomListRef.current.scrollIntoView({ behavior: "smooth" });
         }
     };
@@ -89,7 +85,6 @@ const Channel = ({ id = null }) => {
                                 )
                                 ?.map((message) => (
                                     <li key={message.id}>
-                                        {/* 추후 Message 컴포넌트 생성해서 채팅 내용 표시 */}
                                         <Message {...message} />
                                     </li>
                                 ))}
@@ -117,7 +112,6 @@ const Channel = ({ id = null }) => {
                             className="rounded-full bg-[#4470E1] h-8 w-8 flex items-center justify-center"
                         >
                             <ArrowUp size="26" color="white" />
-                            {/* <BiSend className="text-white text-xl w-10" /> */}
                         </button>
                     </form>
                 </div>

@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { formatRelative } from "date-fns";
-// import { imageUrl, useCurrentUser, timeFormat } from "@lib/frontend";
 import { Typography } from "@mui/material";
 const Message = ({
     createdAt = null,

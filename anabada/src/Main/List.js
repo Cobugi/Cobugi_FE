@@ -9,12 +9,11 @@ import IconButton from "@mui/material/IconButton";
 import { SearchNormal1 } from "iconsax-react";
 import { DateRange } from "react-date-range";
 import CloseIcon from "@mui/icons-material/Close";
-import { Calendar } from "iconsax-react";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import * as locales from "react-date-range/dist/locale";
 import Popover from "@mui/material/Popover";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { updateUserBookmarks } from "../ProductState/UsersState";
 
 export default function List({ selectedCategory, productData, type }) {
@@ -98,7 +97,7 @@ export default function List({ selectedCategory, productData, type }) {
     useEffect(() => {
         // 이 부분에서 검색어에 따라 필터링을 수행합니다.
         applyFilters();
-    }, [searchText, productData]);
+    }, [searchText, productData, filteredProducts]);
 
     useEffect(() => {
         // dateRange가 변경될 때마다 날짜에 따라 필터링을 수행합니다.
@@ -119,6 +118,10 @@ export default function List({ selectedCategory, productData, type }) {
             showAllProducts();
         }
     }, [selectedCategory]);
+
+    useEffect(() => {
+        applyFilters();
+    }, [userBookmarks]);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -172,11 +175,7 @@ export default function List({ selectedCategory, productData, type }) {
                     marginLeft: "50px",
                 }}
             >
-                <Button
-                    size="small"
-                    // endIcon={<Calendar size="24" color="#4470E1" />}
-                    onClick={handleClick}
-                >
+                <Button size="small" onClick={handleClick}>
                     <div
                         style={{
                             color: "black",

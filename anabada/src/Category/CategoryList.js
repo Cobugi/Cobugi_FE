@@ -8,13 +8,7 @@ import { lendingProductsState } from "../ProductState/LendigProductsState";
 
 export default function CategoryList() {
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [searchText, setSearchText] = useState(""); // 추가
     const productData = useRecoilValue(lendingProductsState);
-
-    console.log(productData);
-    const handleSearch = (text) => {
-        setSearchText(text);
-    };
 
     return (
         <>
@@ -41,8 +35,6 @@ export default function CategoryList() {
                 selectedCategory={selectedCategory}
                 productData={productData}
                 type="lending"
-                searchText={searchText} // 추가
-                onSearch={handleSearch} // 추가
             />
         </>
     );
