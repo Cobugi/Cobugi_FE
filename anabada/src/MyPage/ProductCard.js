@@ -11,9 +11,8 @@ import { seekingProductsState } from "../ProductState/SeekingProductsState";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import CircleIcon from "@mui/icons-material/Circle";
 
-const LendProductCard = ({ productId }) => {
-  const lend = useRecoilValue(lendingProductsState);
-  const [product] = lend.filter(({ ProductId }) => ProductId == productId);
+const ProductCard = ({ product, userFlag }) => {
+  // const [product] = lend.filter(({ ProductId }) => ProductId == productId);
 
   return (
     <Card sx={{ maxWidth: 141, maxHeight: 145, display: "inline-block" }}>
@@ -32,13 +31,15 @@ const LendProductCard = ({ productId }) => {
             ? product.productTitle
             : product.productTitle.substring(0, 9) + "..."}
         </Typography>
-        <Typography variant="caption">
-          <CircleIcon fontSize="small" sx={{ color: "#d3d3d3" }} />
-          {product.registeredUserName}
-        </Typography>
+        {userFlag && (
+          <Typography variant="caption">
+            <CircleIcon fontSize="small" sx={{ color: "#d3d3d3" }} />
+            {product.registeredUserName}
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );
 };
 
-export default LendProductCard;
+export default ProductCard;

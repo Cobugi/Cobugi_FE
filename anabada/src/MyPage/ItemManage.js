@@ -8,15 +8,15 @@ import { useRecoilValue } from "recoil";
 import { lendingProductsState } from "../ProductState/LendigProductsState";
 import { seekingProductsState } from "../ProductState/SeekingProductsState";
 import { usersState } from "../ProductState/UsersState";
-import LendProductCard from "./LendProductCard";
+import ProductCard from "./ProductCard";
 import MyProductCard from "./MyProductCard";
 
 //등록물건, 빌려준물건, 빌린물건 이렇게 3가지로 구분해야한다.
 
-const ItemManage = ({ userId }) => {
+const ItemManage = ({ curName, myRegister, mySeek, myLend }) => {
   const [showCalendar, setShowCalendar] = useState(false);
-  const lend = useRecoilValue(lendingProductsState);
-
+  // const lend = useRecoilValue(lendingProductsState);
+  console.log(mySeek);
   return (
     <>
       <Paper
@@ -48,7 +48,22 @@ const ItemManage = ({ userId }) => {
                 등록 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-                {/* 내가 등록한 물건 리스트 */}
+                {myRegister.length > 4
+                  ? myRegister
+                      .slice(0, 4)
+                      .map((product) => (
+                        <ProductCard
+                          product={product}
+                          key={`${curName}-${product.productId}`}
+                        />
+                      ))
+                  : myRegister.map((product) => (
+                      <ProductCard
+                        product={product}
+                        userFlag={false}
+                        key={`${curName}-${product.productId}`}
+                      />
+                    ))}
               </Box>
             </Box>
 
@@ -57,17 +72,23 @@ const ItemManage = ({ userId }) => {
                 빌린 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-                {lend
-                  .filter(({ reservedUsersInfo }) =>
-                    reservedUsersInfo.reduce(
-                      (isContain, { reservedUser }) =>
-                        (isContain |= reservedUser === userId),
-                      false
-                    )
-                  )
-                  .map(({ ProductId }) => (
-                    <LendProductCard productId={ProductId} />
-                  ))}
+                {mySeek.length > 4
+                  ? mySeek
+                      .slice(0, 4)
+                      .map((product) => (
+                        <ProductCard
+                          product={product}
+                          userFlag={true}
+                          key={`${curName}-${product.productId}`}
+                        />
+                      ))
+                  : mySeek.map((product) => (
+                      <ProductCard
+                        product={product}
+                        userFlag={true}
+                        key={`${curName}-${product.productId}`}
+                      />
+                    ))}
               </Box>
             </Box>
 
@@ -76,7 +97,12 @@ const ItemManage = ({ userId }) => {
                 빌려준 물건
               </Typography>
               <Box sx={{ border: 1, margin: 1, height: "70%" }}>
-                <MyProductCard />
+                {myLend.map((product) => (
+                  <ProductCard
+                    product={product}
+                    key={`${curName}-${product.productId}`}
+                  />
+                ))}
               </Box>
             </Box>
           </>

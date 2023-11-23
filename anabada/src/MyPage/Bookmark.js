@@ -18,10 +18,7 @@ import { usersState } from "../ProductState/UsersState";
 
 const Bookmark = ({ userId }) => {
   const UserData = useRecoilValue(usersState);
-  console.log(UserData);
-  console.log(userId);
   const [{ bookMarkData }] = UserData.filter((user) => user.id === userId);
-  console.log(bookMarkData);
   return (
     <>
       <Paper
